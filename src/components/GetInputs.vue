@@ -14,7 +14,7 @@
             ></v-text-field>
           </v-col>
           <v-col cols="10">
-            <v-textarea
+            <tip-tap-vue
               label="Description"
               v-model="description"
               :rules="descriptionRules"
@@ -23,7 +23,7 @@
               <template v-slot:label>
                 <div>Description <small>(optional)</small></div>
               </template>
-            </v-textarea>
+            </tip-tap-vue>
           </v-col>
           <!-- <v-col cols="10">
             <v-select
@@ -69,7 +69,11 @@
 </template>
 
 <script>
+import TipTapVue from "./TipTap.vue";
 export default {
+  components: {
+    TipTapVue,
+  },
   data: () => ({
     valid: false,
     name: "",
