@@ -1,31 +1,41 @@
 <template>
-  <div class="hrounded-lg p-2.5 dark:text-black">
+  <div class="rounded-lg p-2 dark:text-black">
     <div class="flex">
       <div class="flex">
-        <div class="flex gap-5">
-          <button class="p-[2px] shadow-sm" type="button" @click="handleH1">
+        <div class="flex gap-2">
+          <v-btn
+            :loading="loading4"
+            :disabled="loading4"
+            type="button"
+            @click="
+              handleH1;
+              loader = 'loading4';
+            "
+          >
             H1
-          </button>
-          <button class="p-[2px]" type="button" @click="handleH2">H2</button>
-          <button class="p-[2px]" type="button" @click="handleH3">H3</button>
-
-          <button class="p-[2px]" type="button" @click="toggleBold">B</button>
-          <button class="p-[2px] italic" type="button" @click="toggleItalic">
-            I
-          </button>
-          <button class="p-[2px] italic" type="button" @click="toggleUnderline">
-            U
-          </button>
+            <template v-slot:loader>
+              <span class="custom-loader">
+                <v-icon light>mdi-cached</v-icon>
+              </span>
+            </template>
+          </v-btn>
+          <v-btn type="button" @click="handleH2"> H2 </v-btn>
+          <v-btn dense type="button" @click="handleH3">H3</v-btn>
+          <v-btn type="button" @click="toggleBold">B</v-btn>
+          <v-btn class="italic" type="button" @click="toggleItalic"> I </v-btn>
+          <v-btn type="button" @click="toggleUnderline"> U </v-btn>
         </div>
       </div>
-      <lord-icon
-        @click="deleteText"
-        src="https://cdn.lordicon.com/qsloqzpf.json"
-        trigger="hover"
-        colors="primary:Black"
-        class="w-5 cursor-pointer"
-      >
-      </lord-icon>
+      <v-btn>
+        <lord-icon
+          @click="deleteText"
+          src="https://cdn.lordicon.com/qsloqzpf.json"
+          trigger="hover"
+          colors="primary:Black"
+          class="w-5 cursor-pointer"
+        >
+        </lord-icon>
+      </v-btn>
     </div>
 
     <div class="mt-5 text-left">
@@ -54,8 +64,11 @@ export default {
   data() {
     return {
       editor: null,
+      loader: null,
+      loading4: false,
     };
   },
+
   methods: {
     handleH1() {
       this.editor.commands.toggleHeading({ level: 1 });
@@ -90,6 +103,14 @@ export default {
       }
       this.editor.commands.setContent(value, false);
     },
+    loader() {
+      const l = this.loader;
+      this[l] = !this[l];
+
+      setTimeout(() => (this[l] = false), 500);
+
+      this.loader = null;
+    },
   },
   mounted() {
     this.editor = new Editor({
@@ -121,5 +142,41 @@ export default {
 }
 .ProseMirror h3 {
   font-size: 2rem;
+}
+.custom-loader {
+  animation: loader 1s infinite;
+  display: flex;
+}
+@-moz-keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>
