@@ -10,5 +10,9 @@ export default new Vuex.Store({
     mutations: {},
     actions: {},
     modules: {},
-    getters: {}
+    getters: {
+        getNameAndDescription: (state) => {
+            return state.tasks[0].name + ' ' + state.tasks[0].description
+        }
+    }
 })

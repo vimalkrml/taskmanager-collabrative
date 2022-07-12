@@ -14,7 +14,7 @@ export default {
     };
   },
   mounted() {
-    this.posts = this.$store.state.tasks;
+    this.posts = this.$store.getters.getNameAndDescription;
   },
 };
 </script>
