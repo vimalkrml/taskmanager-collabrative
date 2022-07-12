@@ -1,7 +1,5 @@
 <template>
   <v-content>
-    Updating
-    <v-btn tile plain loading></v-btn>
     {{ posts }}
   </v-content>
 </template>
