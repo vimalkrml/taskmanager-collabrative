@@ -1,5 +1,6 @@
 <template>
   <v-content>
+    <v-card-title><h2>Add New Task</h2></v-card-title>
     <v-form v-model="valid">
       <v-container>
         <v-row>
@@ -33,6 +34,7 @@
               required
             ></v-select>
           </v-col>
+
           <v-col cols="10">
             <v-menu
               v-model="menu2"
@@ -59,6 +61,8 @@
             </v-menu>
           </v-col>
         </v-row>
+
+        <v-btn color="thin" dark>Submit</v-btn>
       </v-container>
     </v-form>
   </v-content>
@@ -88,5 +92,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
