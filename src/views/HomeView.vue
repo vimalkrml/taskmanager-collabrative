@@ -1,5 +1,8 @@
 <template>
-  <v-content>Welcome to home</v-content>
+  <v-content>
+    Updating
+    <v-btn tile plain loading></v-btn>
+  </v-content>
 </template>
 
 <script>

@@ -1,9 +1,60 @@
 <template>
-  <v-content>Inputs</v-content>
+  <v-content>
+    <v-form v-model="valid">
+      <v-container>
+        <v-row>
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-model="name"
+              :rules="nameRules"
+              :counter="15"
+              label="Name"
+              required
+            ></v-text-field>
+          </v-col>
+          <v-col cols="12">
+            <v-textarea
+              label="Description"
+              v-model="description"
+              :rules="descriptionRules"
+              :counter="100"
+            >
+              <template v-slot:label>
+                <div>Description <small>(optional)</small></div>
+              </template>
+            </v-textarea>
+          </v-col>
+          <v-col>
+            <v-select
+              v-model="select"
+              :items="items"
+              :rules="[(v) => !!v || 'Item is required']"
+              label="Status"
+              required
+            ></v-select>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-form>
+  </v-content>
 </template>
 
 <script>
-export default {};
+export default {
+  data: () => ({
+    valid: false,
+    name: "",
+    nameRules: [
+      (v) => !!v || "Name is required",
+      (v) => v.length <= 15 || "Name must be less than 15 characters",
+    ],
+    description: "",
+    descriptionRules: [
+      (v) => v.length <= 100 || "Description must be less than 100 characters",
+    ],
+    items: ["True", "False"],
+  }),
+};
 </script>
 
 <style>
