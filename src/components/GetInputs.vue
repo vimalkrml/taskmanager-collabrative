@@ -1,5 +1,5 @@
 <template>
-  <div>Inputs</div>
+  <v-content>Inputs</v-content>
 </template>
 
 <script>

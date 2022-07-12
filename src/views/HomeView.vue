@@ -1,5 +1,5 @@
 <template>
-  <div>Welcome to home</div>
+  <v-content>Welcome to home</v-content>
 </template>
 
 <script>
