@@ -25,15 +25,15 @@
               </template>
             </v-textarea>
           </v-col>
-          <v-col cols="10">
+          <!-- <v-col cols="10">
             <v-select
               v-model="select"
               :items="items"
-              :rules="[(v) => !!v || 'Item is required']"
+              :rules="[(v) => !!v || 'Status is required']"
               label="Status"
               required
             ></v-select>
-          </v-col>
+          </v-col> -->
 
           <v-col cols="10">
             <v-menu
@@ -81,7 +81,7 @@ export default {
     descriptionRules: [
       (v) => v.length <= 100 || "Description must be less than 100 characters",
     ],
-    items: ["True", "False"],
+    // items: ["True", "False"],
     date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
       .toISOString()
       .substr(0, 10),
