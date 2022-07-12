@@ -2,7 +2,7 @@
   <div id="app">
     <v-app-bar class="flex justify-between"> </v-app-bar>
     <v-app>
-      <v-app-bar app color="gray" elevate-on-scroll>
+      <v-app-bar app color="indigo" elevate-on-scroll>
         <v-toolbar-title class="uppercase text-gray-800"
           ><router-link to="/">Home</router-link></v-toolbar-title
         >
@@ -20,9 +20,19 @@
       <v-container style="height: 1000px">
         <router-view />
       </v-container>
+      <footer-bar></footer-bar>
     </v-app>
   </div>
 </template>
+
+<script>
+import FooterBar from "./components/FooterBar.vue";
+export default {
+  components: {
+    FooterBar,
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
