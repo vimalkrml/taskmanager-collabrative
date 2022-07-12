@@ -7,13 +7,10 @@
             :loading="loading4"
             :disabled="loading4"
             type="button"
-            @click="
-              handleH1;
-              loader = 'loading4';
-            "
+            @click="handleH1"
           >
             H1
-            <template v-slot:loader>
+            <template #loader>
               <span class="custom-loader">
                 <v-icon light>mdi-cached</v-icon>
               </span>
