@@ -1,70 +1,19 @@
 <template>
-  <div
-    class="
-      h-52
-      shadow-sm
-      bg-gray-50
-      border border-gray-300
-      text-gray-900 text-sm
-      rounded-lg
-      focus:ring-blue-500 focus:border-blue-500
-      block
-      w-full
-      p-2.5
-      dark:bg-gray-700
-      dark:border-gray-600
-      dark:placeholder-gray-400
-      dark:text-white
-      dark:focus:ring-blue-500
-      dark:focus:border-blue-500
-      dark:shadow-sm-light
-    "
-  >
-    <div class="flex justify-between">
-      <div class="flex gap-3">
-        <div class="flex gap-1">
-          <button
-            class="p-[2px] hover:border font-secondary shadow-sm"
-            type="button"
-            @click="handleH1"
-          >
+  <div class="hrounded-lg p-2.5 dark:text-black border-b">
+    <div class="flex">
+      <div class="flex">
+        <div class="flex gap-5">
+          <button class="p-[2px] shadow-sm" type="button" @click="handleH1">
             H1
           </button>
-          <button
-            class="p-[2px] hover:border font-secondary"
-            type="button"
-            @click="handleH2"
-          >
-            H2
-          </button>
-          <button
-            class="p-[2px] hover:border font-secondary"
-            type="button"
-            @click="handleH3"
-          >
-            H3
-          </button>
-        </div>
-        <div class="flex gap-1">
-          <button
-            class="p-[2px] hover:border font-secondary"
-            type="button"
-            @click="toggleBold"
-          >
-            B
-          </button>
-          <button
-            class="p-[2px] hover:border font-primary italic"
-            type="button"
-            @click="toggleItalic"
-          >
+          <button class="p-[2px]" type="button" @click="handleH2">H2</button>
+          <button class="p-[2px]" type="button" @click="handleH3">H3</button>
+
+          <button class="p-[2px]" type="button" @click="toggleBold">B</button>
+          <button class="p-[2px] italic" type="button" @click="toggleItalic">
             I
           </button>
-          <button
-            class="p-[2px] hover:border font-primary italic border-b"
-            type="button"
-            @click="toggleUnderline"
-          >
+          <button class="p-[2px] italic" type="button" @click="toggleUnderline">
             U
           </button>
         </div>
@@ -73,13 +22,13 @@
         @click="deleteText"
         src="https://cdn.lordicon.com/qsloqzpf.json"
         trigger="hover"
-        colors="primary:#ffffff"
+        colors="primary:Black"
         class="w-5 cursor-pointer"
       >
       </lord-icon>
     </div>
 
-    <div class="mt-5">
+    <div class="mt-5 text-left">
       <editor-content :editor="editor" />
     </div>
   </div>

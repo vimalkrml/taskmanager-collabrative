@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import TipTapVue from "./TipTap.vue";
+import TipTapVue from "./Tip-Tap.vue";
 export default {
   components: {
     TipTapVue,
