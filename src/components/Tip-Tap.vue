@@ -1,5 +1,5 @@
 <template>
-  <div class="hrounded-lg p-2.5 dark:text-black border-b">
+  <div class="hrounded-lg p-2.5 dark:text-black">
     <div class="flex">
       <div class="flex">
         <div class="flex gap-5">

@@ -1,10 +1,10 @@
 <template>
   <v-content>
-    <v-card-title><h2>Add New Task</h2></v-card-title>
+    <v-card-title>Add New Task</v-card-title>
     <v-form v-model="valid">
       <v-container>
         <v-row>
-          <v-col cols="10">
+          <v-col cols="12" class="border bg-gray-200 mb-2">
             <v-text-field
               v-model="name"
               :rules="nameRules"
@@ -13,12 +13,13 @@
               required
             ></v-text-field>
           </v-col>
-          <v-col cols="10">
+          <v-col cols="12" class="border bg-gray-200 mb-2">
             <tip-tap-vue
               label="Description"
               v-model="description"
               :rules="descriptionRules"
               :counter="100"
+              class=""
             >
               <template v-slot:label>
                 <div>Description <small>(optional)</small></div>
@@ -35,7 +36,7 @@
             ></v-select>
           </v-col> -->
 
-          <v-col cols="10">
+          <v-col cols="12" class="border bg-gray-200">
             <v-menu
               v-model="menu2"
               :close-on-content-click="false"
@@ -47,7 +48,7 @@
               <template v-slot:activator="{ on, attrs }">
                 <v-text-field
                   v-model="date"
-                  label="Picker without buttons"
+                  label="Due Date"
                   prepend-icon="mdi-calendar"
                   readonly
                   v-bind="attrs"
@@ -61,8 +62,9 @@
             </v-menu>
           </v-col>
         </v-row>
-
-        <v-btn color="thin" dark>Submit</v-btn>
+        <v-content>
+          <v-btn color="thin" dark>Submit</v-btn>
+        </v-content>
       </v-container>
     </v-form>
   </v-content>
