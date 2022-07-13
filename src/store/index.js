@@ -9,17 +9,9 @@ export default new Vuex.Store({
   },
   mutations: {
     loadTasks: (state, tasks) => {
-      console.log(tasks);
+      // console.log(tasks);
       state.tasks = tasks;
-      console.log(state.tasks);
-    },
-    deleteTasks(state, taskid) {
-      console.log(taskid);
-      const mutateData = state.tasks.filter((task) => task.id !== taskid);
-      state.tasks = mutateData;
-      fetch("http://localhost:3000/tasks/" + taskid, { method: "DELETE" })
-        .then((res) => res.json())
-        .then((json) => console.log(json));
+      // console.log(state.tasks);
     },
     onComplete(state, payload) {
       //   console.log(state.tasks);
@@ -30,6 +22,25 @@ export default new Vuex.Store({
         }
       });
       //   console.log(state.tasks);
+    },
+    onDelete(state, tasks) {
+      // console.log("hii");
+      const mutateData = state.tasks.filter((task) => task.id !== tasks);
+      // console.log(mutateData)
+      state.tasks = mutateData;
+      console.log(state.tasks);
+    },
+  },
+  actions: {
+    getTasks: async (context) => {
+      const res = await fetch("http://localhost:3000/tasks");
+      const data = await res.json();
+      console.log(data);
+
+      context.commit("loadTasks", data);
+    },
+    onComplete: (context, payload) => {
+      context.commit("onComplete", payload);
       const updateRequest = {
         method: "PATCH",
         body: JSON.stringify({
@@ -42,17 +53,10 @@ export default new Vuex.Store({
       };
       fetch("http://localhost:3000/tasks/" + payload.id, updateRequest);
     },
-
-  },
-  actions: {
-    getTasks: async (context) => {
-      const res = await fetch("http://localhost:3000/tasks");
-      const data = await res.json();
-      console.log(data);
-
-      context.commit("loadTasks", data);
-    },
-
+    onDelete: (context, tasks) => {
+      context.commit("onDelete", tasks)
+      fetch("http://localhost:3000/tasks/" + tasks.id, { method: "DELETE" })
+    }
   },
   modules: {},
   getters: {},

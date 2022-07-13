@@ -1,5 +1,5 @@
 <template>
-  <v-content>
+  <v-main>
     <v-card v-for="task in tasks" :key="task.id" class="mb-2">
       <v-row align="center">
         <v-col cols="1">
@@ -18,11 +18,18 @@
           <v-card-text>{{ task.status }}</v-card-text>
         </v-col>
         <v-col cols="2">
-          <v-btn @click="OnDelete">Delete</v-btn>
+          <lord-icon
+            @click="onDelete(task.id)"
+            src="https://cdn.lordicon.com/qsloqzpf.json"
+            trigger="hover"
+            colors="primary:#121331"
+            class="cursor-pointer"
+          >
+          </lord-icon>
         </v-col>
       </v-row>
     </v-card>
-  </v-content>
+  </v-main>
 </template>
 
 <script>
@@ -35,7 +42,7 @@ export default {
   methods: {
     onComplete(id, completed) {
       // console.log("dddd");
-      this.$store.commit("onComplete", { id, completed });
+      this.$store.dispatch("onComplete", { id, completed });
       this.tasks.forEach((task) => {
         if (task.id === id) {
           task.completed = completed;
@@ -44,14 +51,15 @@ export default {
         }
       });
     },
-    onDelete() {
-      console.log("hii");
+    onDelete(id) {
+      console.log(id);
+      this.$store.commit("onDelete", id);
     },
   },
   mounted() {
     this.$store.dispatch("getTasks").then(() => {
       this.tasks = this.$store.state.tasks;
-      console.log(this.tasks);
+      // console.log(this.tasks);
     });
     // console.log(JSON.parse(JSON.stringify(this.tasks)));
   },
