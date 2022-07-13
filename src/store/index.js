@@ -26,7 +26,7 @@ export default new Vuex.Store({
     onDelete(state, tasks) {
       // console.log("hii");
       const mutateData = state.tasks.filter((task) => task.id !== tasks);
-      // console.log(mutateData)
+      console.log(mutateData)
       state.tasks = mutateData;
       console.log(state.tasks);
     },
