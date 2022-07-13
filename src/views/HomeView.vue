@@ -53,8 +53,9 @@ export default {
     },
     onDelete(id) {
       console.log(id);
-      this.$store.commit("onDelete", id);
-      console.log(this.tasks);
+      this.$store.dispatch("onDelete", id);
+      // console.log(this.tasks);
+      this.tasks = this.tasks.filter((task) => task.id !== id);
     },
   },
   mounted() {

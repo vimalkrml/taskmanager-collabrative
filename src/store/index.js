@@ -23,10 +23,10 @@ export default new Vuex.Store({
       });
       //   console.log(state.tasks);
     },
-    onDelete(state, tasks) {
+    onDelete(state, id) {
       // console.log("hii");
-      const mutateData = state.tasks.filter((task) => task.id !== tasks);
-      console.log(mutateData)
+      const mutateData = state.tasks.filter((task) => task.id !== id);
+      console.log(mutateData);
       state.tasks = mutateData;
       console.log(state.tasks);
     },
@@ -53,10 +53,10 @@ export default new Vuex.Store({
       };
       fetch("http://localhost:3000/tasks/" + payload.id, updateRequest);
     },
-    onDelete: async (context, tasks) => {
-      context.commit("onDelete", tasks)
-      await fetch("http://localhost:3000/tasks/" + tasks.id, { method: "DELETE" })
-    }
+    onDelete: async (context, id) => {
+      context.commit("onDelete", id);
+      await fetch("http://localhost:3000/tasks/" + id, { method: "DELETE" });
+    },
   },
   modules: {},
   getters: {},
