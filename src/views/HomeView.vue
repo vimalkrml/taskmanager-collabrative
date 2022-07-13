@@ -1,7 +1,7 @@
 <template>
   <v-main>
     <v-btn class="mt-20" plain loading v-if="isLoading"></v-btn>
-    <v-content v-else>
+    <v-content v-else class="mx-0 md:mx-10">
       <v-card v-for="task in tasks" :key="task.id" class="mb-2">
         <v-row align="center">
           <v-col cols="1">
@@ -12,9 +12,9 @@
             ></v-checkbox>
           </v-col>
           <v-col cols="7">
-            <h1 class="text-left text-2xl">
+            <v-card-title>
               {{ task.title }}
-            </h1>
+            </v-card-title>
           </v-col>
           <v-col cols="2">
             <v-card-text>{{ task.status }}</v-card-text>
@@ -25,7 +25,7 @@
               src="https://cdn.lordicon.com/qsloqzpf.json"
               trigger="hover"
               colors="primary:#121331"
-              class="cursor-pointer"
+              class="cursor-pointer w-7"
             >
             </lord-icon>
           </v-col>

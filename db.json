@@ -4,8 +4,8 @@
       "userId": 1,
       "id": 4,
       "title": "HomeWork",
-      "completed": true,
-      "status": "Done"
+      "completed": false,
+      "status": "Not Done"
     },
     {
       "userId": 1,
