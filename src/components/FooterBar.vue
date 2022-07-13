@@ -1,10 +1,8 @@
 <template>
-  <v-footer height="auto" color="thin" dark>
-    <v-layout justify-center row wrap>
-      <v-flex justify-center dark py-3 white--text xs5>
-        &copy;2022 — <strong>Team Collab</strong>
-      </v-flex>
-    </v-layout>
+  <v-footer absolute color="thin" dark class="py-3">
+    <v-col class="text-center" cols="12">
+      <h1>&copy;2022 — <span class="font-bold">Team Collab</span></h1>
+    </v-col>
   </v-footer>
 </template>
 
@@ -12,5 +10,4 @@
 export default {};
 </script>
 
-<style>
-</style>
+<style></style>
