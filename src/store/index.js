@@ -13,6 +13,14 @@ export default new Vuex.Store({
       state.tasks = tasks;
       console.log(state.tasks);
     },
+    deleteTasks(state, taskid) {
+      console.log(taskid);
+      const mutateData = state.tasks.filter((task) => task.id !== taskid);
+      state.tasks = mutateData;
+      fetch("http://localhost:3000/tasks/" + taskid, { method: "DELETE" })
+        .then((res) => res.json())
+        .then((json) => console.log(json));
+    },
     onComplete(state, payload) {
       //   console.log(state.tasks);
       state.tasks.forEach((task) => {
@@ -34,6 +42,7 @@ export default new Vuex.Store({
       };
       fetch("http://localhost:3000/tasks/" + payload.id, updateRequest);
     },
+
   },
   actions: {
     getTasks: async (context) => {
@@ -43,6 +52,7 @@ export default new Vuex.Store({
 
       context.commit("loadTasks", data);
     },
+
   },
   modules: {},
   getters: {},

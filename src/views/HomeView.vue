@@ -9,13 +9,16 @@
             class="ml-2"
           ></v-checkbox>
         </v-col>
-        <v-col cols="9">
+        <v-col cols="7">
           <h1 class="text-left text-2xl">
             {{ task.title }}
           </h1>
         </v-col>
         <v-col cols="2">
           <v-card-text>{{ task.status }}</v-card-text>
+        </v-col>
+        <v-col cols="2">
+          <v-btn @click="OnDelete">Delete</v-btn>
         </v-col>
       </v-row>
     </v-card>
@@ -40,6 +43,9 @@ export default {
           //   console.log(task);
         }
       });
+    },
+    onDelete() {
+      console.log("hii");
     },
   },
   mounted() {
