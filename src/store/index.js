@@ -22,6 +22,18 @@ export default new Vuex.Store({
         }
       });
       //   console.log(state.tasks);
+    },
+  },
+  actions: {
+    getTasks: async (context) => {
+      const res = await fetch("http://localhost:3000/tasks");
+      const data = await res.json();
+      console.log(data);
+
+      context.commit("loadTasks", data);
+    },
+    onComplete: (context, payload) => {
+      context.commit("onComplete", payload);
       const updateRequest = {
         method: "PATCH",
         body: JSON.stringify({
@@ -33,15 +45,6 @@ export default new Vuex.Store({
         },
       };
       fetch("http://localhost:3000/tasks/" + payload.id, updateRequest);
-    },
-  },
-  actions: {
-    getTasks: async (context) => {
-      const res = await fetch("http://localhost:3000/tasks");
-      const data = await res.json();
-      console.log(data);
-
-      context.commit("loadTasks", data);
     },
   },
   modules: {},

@@ -32,7 +32,7 @@ export default {
   methods: {
     onComplete(id, completed) {
       // console.log("dddd");
-      this.$store.commit("onComplete", { id, completed });
+      this.$store.dispatch("onComplete", { id, completed });
       this.tasks.forEach((task) => {
         if (task.id === id) {
           task.completed = completed;
