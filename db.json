@@ -10,16 +10,23 @@
     {
       "userId": 1,
       "id": 5,
-      "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
+      "title": "Gym",
       "completed": false,
       "status": "Not Done"
     },
     {
       "userId": 1,
+      "id": 6,
+      "title": "Cycling",
+      "completed": true,
+      "status": "Done"
+    },
+    {
+      "userId": 1,
       "id": 7,
-      "title": "illo expedita consequatur quia in",
-      "completed": false,
-      "status": "Not done"
+      "title": "Work",
+      "completed": true,
+      "status": "Done"
     },
     {
       "userId": 1,

@@ -4,13 +4,12 @@
     <v-content v-else class="mx-0 md:mx-10">
       <v-card v-for="task in tasks" :key="task.id" class="mb-2">
         <v-row align="center">
-          <v-col cols="1">
-            <v-checkbox
-              v-model="task.completed"
-              @click="onComplete(task.id, task.completed)"
-              class="ml-2"
-            ></v-checkbox>
-          </v-col>
+          <v-checkbox
+            v-model="task.completed"
+            @click="onComplete(task.id, task.completed)"
+            class="ml-5"
+          ></v-checkbox>
+
           <v-col cols="7">
             <v-card-title>
               {{ task.title }}
