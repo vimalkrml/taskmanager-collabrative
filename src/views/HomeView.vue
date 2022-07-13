@@ -36,10 +36,11 @@
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
 export default {
   data() {
     return {
-      tasks: [],
+      // tasks: [],
       isLoading: true,
     };
   },
@@ -55,22 +56,20 @@ export default {
         }
       });
     },
-    onDelete(id) {
-      console.log(id);
-      this.$store.dispatch("onDelete", id);
-      // console.log(this.tasks);
-      this.tasks = this.tasks.filter((task) => task.id !== id);
-    },
+    ...mapActions(["task_index", "onDelete"]),
   },
   mounted() {
-    this.$store.dispatch("getTasks").then(() => {
-      this.tasks = this.$store.state.tasks;
-      // console.log(this.tasks);
-    });
+    this.task_index();
+    // this.onComplete();
     // console.log(JSON.parse(JSON.stringify(this.tasks)));
     setTimeout(() => {
       this.isLoading = false;
     }, 1000);
   },
+  computed: mapState({
+    tasks(state) {
+      return state.tasks;
+    },
+  }),
 };
 </script>

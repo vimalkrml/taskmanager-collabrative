@@ -6,18 +6,20 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     tasks: null,
+    task: {}
   },
   mutations: {
-    loadTasks(state, tasks) {
+    TASKS_INDEX(state, tasks) {
       // console.log(tasks);
       state.tasks = tasks;
-      // console.log(state.tasks);
+      console.log(state.tasks);
     },
     onComplete(state, payload) {
       //   console.log(state.tasks);
       state.tasks.forEach((task) => {
         if (task.id === payload.id) {
           task.completed = payload.completed;
+          task.status = true;
           //   console.log(task);
         }
       });
@@ -28,16 +30,16 @@ export default new Vuex.Store({
       const mutateData = state.tasks.filter((task) => task.id !== id);
       console.log(mutateData);
       state.tasks = mutateData;
-      console.log(state.tasks);
+      // console.log(state.tasks);
     },
   },
   actions: {
-    getTasks: async (context) => {
+    task_index: async (context) => {
       const res = await fetch("http://localhost:3000/tasks");
       const data = await res.json();
       console.log(data);
 
-      context.commit("loadTasks", data);
+      context.commit("TASKS_INDEX", data);
     },
     onComplete: (context, payload) => {
       context.commit("onComplete", payload);
@@ -59,5 +61,7 @@ export default new Vuex.Store({
     },
   },
   modules: {},
-  getters: {},
+  getters: {
+    getTasks: state => state.tasks
+  },
 });
