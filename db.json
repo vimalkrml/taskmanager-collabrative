@@ -9,8 +9,6 @@
     },
     {
       "userId": 1,
-<<<<<<< HEAD
-=======
       "id": 5,
       "title": "Gym",
       "completed": false,
@@ -18,7 +16,6 @@
     },
     {
       "userId": 1,
->>>>>>> 6e0abcf5317b1130115fd9bd8d642f8723ca021b
       "id": 6,
       "title": "Cycling",
       "completed": false,
@@ -26,39 +23,15 @@
     },
     {
       "userId": 1,
-<<<<<<< HEAD
-      "id": 8,
-      "title": "quo adipisci enim quam ut ab",
-=======
       "id": 7,
       "title": "Work",
->>>>>>> 6e0abcf5317b1130115fd9bd8d642f8723ca021b
       "completed": false,
       "status": "Not Done"
     },
     {
       "userId": 1,
-<<<<<<< HEAD
-      "id": 9,
-      "title": "quo adipisci enim quam ut ab",
-      "completed": false,
-      "status": "Not Done"
-    },
-    {
-      "userId": 1,
-      "id": 10,
-      "title": "quo adipisci enim quam ut ab",
-      "completed": false,
-      "status": "Not Done"
-    },
-    {
-      "userId": 1,
-      "id": 11,
-      "title": "quo adipisci enim quam ut ab",
-=======
       "id": 8,
       "title": "Sleep",
->>>>>>> 6e0abcf5317b1130115fd9bd8d642f8723ca021b
       "completed": false,
       "status": "Not Done"
     }
