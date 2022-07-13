@@ -53,9 +53,9 @@ export default new Vuex.Store({
       };
       fetch("http://localhost:3000/tasks/" + payload.id, updateRequest);
     },
-    onDelete: (context, tasks) => {
+    onDelete: async (context, tasks) => {
       context.commit("onDelete", tasks)
-      fetch("http://localhost:3000/tasks/" + tasks.id, { method: "DELETE" })
+      await fetch("http://localhost:3000/tasks/" + tasks.id, { method: "DELETE" })
     }
   },
   modules: {},

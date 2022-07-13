@@ -54,6 +54,7 @@ export default {
     onDelete(id) {
       console.log(id);
       this.$store.commit("onDelete", id);
+      console.log(this.tasks);
     },
   },
   mounted() {
