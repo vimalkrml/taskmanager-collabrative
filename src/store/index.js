@@ -8,7 +8,7 @@ export default new Vuex.Store({
     tasks: null,
   },
   mutations: {
-    loadTasks: (state, tasks) => {
+    loadTasks(state, tasks) {
       // console.log(tasks);
       state.tasks = tasks;
       // console.log(state.tasks);
