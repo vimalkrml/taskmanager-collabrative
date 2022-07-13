@@ -18,15 +18,15 @@
       "userId": 1,
       "id": 6,
       "title": "Cycling",
-      "completed": false,
-      "status": "Not Done"
+      "completed": true,
+      "status": "Done"
     },
     {
       "userId": 1,
       "id": 7,
       "title": "Work",
-      "completed": false,
-      "status": "Not Done"
+      "completed": true,
+      "status": "Done"
     },
     {
       "userId": 1,
