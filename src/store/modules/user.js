@@ -55,12 +55,13 @@ export default {
         },
         user_show: async (context, payload) => {
             const response = await fetch("http://localhost:3000/users/" + payload);
-            const json = response.json();
+            const json = await response.json();
             console.log(json);
             context.commit("USER_SHOW", json)
         }
     },
     getters: {
-        getusers: (state) => state.users,
+        getUsers: (state) => state.users,
+        getUser: (state) => state.user,
     },
 };

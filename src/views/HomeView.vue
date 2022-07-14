@@ -11,7 +11,6 @@
               class="ml-5"
             ></v-checkbox>
           </v-col>
-
           <v-snackbar v-model="snackbar" :multi-line="multiLine">
             {{ text }}
             <template v-slot:action="{ attrs }">
@@ -61,7 +60,6 @@ import { mapActions, mapState } from "vuex";
 export default {
   data() {
     return {
-      // tasks: [],
       isLoading: true,
       multiLine: true,
       snackbar: false,
@@ -70,32 +68,41 @@ export default {
   },
   methods: {
     onComplete(id, completed) {
-      // console.log("dddd");
       this.$store.dispatch("task_complete", { id, completed });
       this.tasks.forEach((task) => {
         if (task.id === id) {
           task.completed = completed;
           task.status = completed ? "Done" : "Not Done";
           this.text = task.status;
-          //   console.log(task);
         }
       });
       this.snackbar = true;
     },
-    ...mapActions(["task_index", "task_delete"]),
+    get_user(id) {
+      console.log(this.users.filter((user) => user.id === id));
+      return this.users.filter((user) => user.id === id);
+    },
+    ...mapActions("task", ["task_index", "task_delete"]),
+    ...mapActions("user", ["user_index"]),
   },
   mounted() {
+    this.user_index();
     this.task_index();
-    // this.onComplete();
-    // console.log(JSON.parse(JSON.stringify(this.tasks)));
     setTimeout(() => {
       this.isLoading = false;
     }, 2000);
   },
-  computed: mapState({
-    tasks(state) {
-      return state.tasks;
-    },
-  }),
+  computed: {
+    ...mapState("user", {
+      users(state) {
+        return state.users;
+      },
+    }),
+    ...mapState("task", {
+      tasks(state) {
+        return state.tasks;
+      },
+    }),
+  },
 };
 </script>
