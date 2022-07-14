@@ -79,7 +79,7 @@ export default {
     // console.log(JSON.parse(JSON.stringify(this.tasks)));
     setTimeout(() => {
       this.isLoading = false;
-    }, 1000);
+    }, 2000);
   },
   computed: mapState({
     tasks(state) {

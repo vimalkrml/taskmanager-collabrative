@@ -68,6 +68,15 @@
         </v-content>
       </v-container>
     </v-form>
+    <v-snackbar v-model="snackbar">
+      {{ text }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn color="indigo" text v-bind="attrs" @click="close()">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-content>
 </template>
 
@@ -98,9 +107,12 @@ export default {
     menu: false,
     modal: false,
     menu2: false,
+    snackbar: false,
+    text: "Successfully Submitted",
   }),
   methods: {
     addTask() {
+      this.snackbar = true;
       const newTask = {
         id: this.id,
         name: this.name,
@@ -111,10 +123,14 @@ export default {
       };
       // console.log(newTask);
       this.$store.dispatch("task_add", newTask);
-      this.$router.push({ path: "/" });
+
       // this.newId;
       // this.name;
       // this.description;
+    },
+    close() {
+      this.snackbar = false;
+      this.$router.push({ path: "/" });
     },
   },
 };
