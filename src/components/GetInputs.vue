@@ -68,7 +68,7 @@
         >
       </v-content>
     </v-form>
-    <v-snackbar v-model="snackbar">
+    <v-snackbar v-model="snackbar" top>
       {{ text }}
 
       <template v-slot:action="{ attrs }">
