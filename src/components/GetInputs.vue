@@ -61,12 +61,12 @@
             </v-menu>
           </v-col>
         </v-row>
-        <v-content>
-          <v-btn type="submit" form="task_add_form" color="thin" dark
-            >Submit</v-btn
-          >
-        </v-content>
       </v-container>
+      <v-content>
+        <v-btn type="submit" form="task_add_form" color="thin" dark
+          >Submit</v-btn
+        >
+      </v-content>
     </v-form>
     <v-snackbar v-model="snackbar">
       {{ text }}
