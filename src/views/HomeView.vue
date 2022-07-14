@@ -23,7 +23,7 @@
 
           <v-col cols="4">
             <v-card-title
-              :class="{ 'line-through text-gray-400': task.completed }"
+              :class="{ 'line-through text-gray-400': task.completed }" 
               v-html="task.name"
             >
               <!-- {{ task.title }} -->
@@ -32,7 +32,7 @@
           <v-spacer />
 
           <v-col cols="2">
-            <h1>{{ task.date }}</h1>
+            <h1 class="font-bold" >{{ task.date }}</h1>
           </v-col>
           <v-spacer />
           <v-col cols="2">
