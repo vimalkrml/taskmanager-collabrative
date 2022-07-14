@@ -4,20 +4,26 @@
     <v-content v-else class="mx-0 md:mx-10">
       <v-card v-for="task in tasks" :key="task.id" class="mb-2">
         <v-row align="center">
-          <v-checkbox
-            v-model="task.completed"
-            @click="onComplete(task.id, task.completed)"
-            class="ml-5"
-          ></v-checkbox>
+          <v-btn>
+            <v-checkbox
+              v-model="task.completed"
+              @click="onComplete(task.id, task.completed)"
+              class="ml-5"
+            ></v-checkbox>
+          </v-btn>
+
+          <v-snackbar>
+            <v-col cols="2">
+              <v-card-text>{{ task.status }}</v-card-text>
+            </v-col>
+          </v-snackbar>
 
           <v-col cols="7">
             <v-card-title v-html="task.title">
               <!-- {{ task.title }} -->
             </v-card-title>
           </v-col>
-          <v-col cols="2">
-            <v-card-text>{{ task.status }}</v-card-text>
-          </v-col>
+
           <v-col cols="2">
             <lord-icon
               @click="task_delete(task.id)"

@@ -75,7 +75,6 @@ export default new Vuex.Store({
     task_add: (context, payload) => {
       context.commit("TASK_ADD", payload)
       const newTask = {
-        id: payload.newId,
         title: payload.task,
         description: payload.description,
         duedate: payload.date
