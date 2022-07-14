@@ -32,7 +32,12 @@
           <v-spacer />
 
           <v-col cols="2">
-            <v-btn dark class="font-bold">{{ task.date }}</v-btn>
+            <v-btn
+              :class="{ 'line-through text-gray-400': task.completed }"
+              dark
+              class="font-bold"
+              >{{ task.date }}</v-btn
+            >
           </v-col>
           <v-spacer />
           <v-col cols="2">
