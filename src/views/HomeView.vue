@@ -22,7 +22,10 @@
           </v-snackbar>
 
           <v-col cols="7">
-            <v-card-title v-html="task.title">
+            <v-card-title
+              :class="{ 'line-through text-gray-400': task.completed }"
+              v-html="task.title"
+            >
               <!-- {{ task.title }} -->
             </v-card-title>
           </v-col>
