@@ -11,8 +11,8 @@
       "userId": 1,
       "id": 5,
       "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
-      "completed": true,
-      "status": "Done"
+      "completed": false,
+      "status": "Not Done"
     },
     {
       "userId": 1,
