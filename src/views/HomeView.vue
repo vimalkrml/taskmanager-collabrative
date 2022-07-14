@@ -2,7 +2,7 @@
   <v-main>
     <v-btn class="mt-20" plain loading v-if="isLoading"></v-btn>
     <v-content v-else class="mx-0 md:mx-10">
-      <v-card v-for="task in tasks" :key="task.id" class="mb-2">
+      <v-card v-for="task in tasks" :key="task.id" class="mb-2" hover>
         <v-row align="center">
           <v-col cols="2">
             <v-checkbox
@@ -21,12 +21,14 @@
             </template>
           </v-snackbar>
 
-          <v-col cols="7">
-            <v-card-title v-html="task.title">
-              <!-- {{ task.title }} -->
+          <v-col cols="6">
+            <v-card-title class="flex items-center" v-html="task.name">
             </v-card-title>
           </v-col>
-
+          <v-col cols="2">
+            <h1>{{ task.date }}</h1>
+          </v-col>
+          <v-spacer />
           <v-col cols="2">
             <lord-icon
               @click="task_delete(task.id)"
