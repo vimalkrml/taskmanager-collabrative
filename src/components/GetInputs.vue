@@ -124,13 +124,13 @@ export default {
       // console.log(newTask);
       this.$store.dispatch("task_add", newTask);
 
-      this.$router.push({ path: "/" });
       // this.newId;
       // this.name;
       // this.description;
     },
     close() {
       this.snackbar = false;
+      this.$router.push({ path: "/" });
     },
   },
 };
