@@ -123,7 +123,7 @@ export default {
       };
       // console.log(newTask);
       this.$store.dispatch("task_add", newTask);
-
+      this.$refs.form.validate();
       // this.newId;
       // this.name;
       // this.description;

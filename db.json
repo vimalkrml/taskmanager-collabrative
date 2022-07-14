@@ -15,22 +15,6 @@
       "date": "2022-12-08",
       "completed": false,
       "status": "Not Done"
-    },
-    {
-      "id": 376,
-      "name": "",
-      "title": "",
-      "date": "2022-07-14",
-      "completed": false,
-      "status": "Not Done"
-    },
-    {
-      "id": 456,
-      "name": "",
-      "title": "",
-      "date": "2022-07-14",
-      "completed": false,
-      "status": "Not Done"
     }
   ]
 }
