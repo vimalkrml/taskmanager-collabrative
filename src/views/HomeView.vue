@@ -11,8 +11,8 @@
           ></v-checkbox>
 
           <v-col cols="7">
-            <v-card-title>
-              {{ task.title }}
+            <v-card-title v-html="task.title">
+              <!-- {{ task.title }} -->
             </v-card-title>
           </v-col>
           <v-col cols="2">
@@ -20,7 +20,7 @@
           </v-col>
           <v-col cols="2">
             <lord-icon
-              @click="onDelete(task.id)"
+              @click="task_delete(task.id)"
               src="https://cdn.lordicon.com/qsloqzpf.json"
               trigger="hover"
               colors="primary:#121331"
@@ -46,7 +46,7 @@ export default {
   methods: {
     onComplete(id, completed) {
       // console.log("dddd");
-      this.$store.dispatch("onComplete", { id, completed });
+      this.$store.dispatch("task_complete", { id, completed });
       this.tasks.forEach((task) => {
         if (task.id === id) {
           task.completed = completed;
@@ -55,7 +55,7 @@ export default {
         }
       });
     },
-    ...mapActions(["task_index", "onDelete"]),
+    ...mapActions(["task_index", "task_delete"]),
   },
   mounted() {
     this.task_index();

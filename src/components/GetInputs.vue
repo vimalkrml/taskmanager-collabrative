@@ -1,7 +1,7 @@
 <template>
   <v-content>
     <v-card-title>Add New Task</v-card-title>
-    <v-form v-model="valid">
+    <v-form @submit.prevent="addTask" id="task_add_form" v-model="valid">
       <v-container>
         <v-row>
           <v-col cols="12" class="border bg-gray-200 mb-2">
@@ -15,7 +15,6 @@
           </v-col>
           <v-col cols="12" class="border bg-gray-200 mb-2">
             <tip-tap-vue
-              label="Description"
               v-model="description"
               :rules="descriptionRules"
               :counter="100"
@@ -63,7 +62,9 @@
           </v-col>
         </v-row>
         <v-content>
-          <v-btn color="thin" dark>Submit</v-btn>
+          <v-btn type="submit" form="task_add_form" color="thin" dark
+            >Submit</v-btn
+          >
         </v-content>
       </v-container>
     </v-form>
@@ -76,14 +77,17 @@ export default {
   components: {
     TipTapVue,
   },
+
   data: () => ({
     valid: false,
     name: "",
+    description: "",
+    newId: Math.floor(Math.random() * 10),
+
     nameRules: [
       (v) => !!v || "Name is required",
       (v) => v.length <= 15 || "Name must be less than 15 characters",
     ],
-    description: "",
     descriptionRules: [
       (v) => v.length <= 100 || "Description must be less than 100 characters",
     ],
@@ -95,6 +99,20 @@ export default {
     modal: false,
     menu2: false,
   }),
+  methods: {
+    addTask(e) {
+      console.log("working");
+      console.log(e);
+      console.log(this.newId);
+      console.log(this.name);
+      console.log(this.description);
+      console.log(this.date);
+      this.$store.dispatch("task_add", e);
+      // this.newId;
+      // this.name;
+      // this.description;
+    },
+  },
 };
 </script>
 

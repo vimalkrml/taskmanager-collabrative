@@ -5,7 +5,13 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    tasks: null,
+    tasks: {
+      id: "",
+      description: "",
+      completed: "",
+      status: "",
+      duedate: ""
+    },
     task: {}
   },
   mutations: {
@@ -14,7 +20,7 @@ export default new Vuex.Store({
       state.tasks = tasks;
       console.log(state.tasks);
     },
-    onComplete(state, payload) {
+    TASK_COMPLETE(state, payload) {
       //   console.log(state.tasks);
       state.tasks.forEach((task) => {
         if (task.id === payload.id) {
@@ -25,14 +31,21 @@ export default new Vuex.Store({
       });
       //   console.log(state.tasks);
     },
-    onDelete(state, id) {
+    TASK_DELETE(state, payload) {
       // console.log("hii");
-      const mutateData = state.tasks.filter((task) => task.id !== id);
+      const mutateData = state.tasks.filter((task) => task.id !== payload);
       console.log(mutateData);
       state.tasks = mutateData;
       // console.log(state.tasks);
     },
+    TASK_ADD() {
+      console.log("task added")
+      // state.tasks.push(payload);
+      // console.log(payload)
+    },
+
   },
+
   actions: {
     task_index: async (context) => {
       const res = await fetch("http://localhost:3000/tasks");
@@ -41,8 +54,8 @@ export default new Vuex.Store({
 
       context.commit("TASKS_INDEX", data);
     },
-    onComplete: (context, payload) => {
-      context.commit("onComplete", payload);
+    task_complete: (context, payload) => {
+      context.commit("TASK_COMPLETE", payload);
       const updateRequest = {
         method: "PATCH",
         body: JSON.stringify({
@@ -55,10 +68,25 @@ export default new Vuex.Store({
       };
       fetch("http://localhost:3000/tasks/" + payload.id, updateRequest);
     },
-    onDelete: async (context, id) => {
-      context.commit("onDelete", id);
-      await fetch("http://localhost:3000/tasks/" + id, { method: "DELETE" });
+    task_delete: async (context, payload) => {
+      context.commit("TASK_DELETE", payload);
+      await fetch("http://localhost:3000/tasks/" + payload, { method: "DELETE" });
     },
+    task_add: (context, payload) => {
+      context.commit("TASK_ADD", payload)
+      const newTask = {
+        id: payload.newId,
+        title: payload.task,
+        description: payload.description,
+        duedate: payload.date
+      }
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newTask),
+      };
+      fetch("http://localhost:3000/tasks", requestOptions);
+    }
   },
   modules: {},
   getters: {
