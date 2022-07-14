@@ -5,20 +5,14 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    tasks: {
-      id: "",
-      description: "",
-      completed: "",
-      status: "",
-      duedate: ""
-    },
-    task: {}
+    tasks: [],
+    task: {},
   },
   mutations: {
     TASKS_INDEX(state, tasks) {
       // console.log(tasks);
       state.tasks = tasks;
-      console.log(state.tasks);
+      // console.log(state.tasks);
     },
     TASK_COMPLETE(state, payload) {
       //   console.log(state.tasks);
@@ -38,12 +32,12 @@ export default new Vuex.Store({
       state.tasks = mutateData;
       // console.log(state.tasks);
     },
-    TASK_ADD() {
-      console.log("task added")
-      // state.tasks.push(payload);
+    TASK_ADD(state, payload) {
+      console.log(state.tasks);
+      // JSON.parse(JSON.stringify(state.tasks)).push(payload);
+      state.tasks.push(payload);
       // console.log(payload)
     },
-
   },
 
   actions: {
@@ -70,25 +64,24 @@ export default new Vuex.Store({
     },
     task_delete: async (context, payload) => {
       context.commit("TASK_DELETE", payload);
-      await fetch("http://localhost:3000/tasks/" + payload, { method: "DELETE" });
+      await fetch("http://localhost:3000/tasks/" + payload, {
+        method: "DELETE",
+      });
     },
     task_add: (context, payload) => {
-      context.commit("TASK_ADD", payload)
-      const newTask = {
-        title: payload.task,
-        description: payload.description,
-        duedate: payload.date
-      }
+      context.commit("TASK_ADD", payload);
+      const newTask = { ...payload };
+      // console.log(newTask);
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newTask),
       };
       fetch("http://localhost:3000/tasks", requestOptions);
-    }
+    },
   },
   modules: {},
   getters: {
-    getTasks: state => state.tasks
+    getTasks: (state) => state.tasks,
   },
 });

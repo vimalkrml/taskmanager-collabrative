@@ -15,7 +15,7 @@
           </v-col>
           <v-col cols="12" class="border bg-gray-200 mb-2">
             <tip-tap-vue
-              v-model="description"
+              v-model="title"
               :rules="descriptionRules"
               :counter="100"
               class=""
@@ -81,8 +81,8 @@ export default {
   data: () => ({
     valid: false,
     name: "",
-    description: "",
-    newId: Math.floor(Math.random() * 10),
+    title: "",
+    id: Math.floor(Math.random() * 1000),
 
     nameRules: [
       (v) => !!v || "Name is required",
@@ -100,14 +100,18 @@ export default {
     menu2: false,
   }),
   methods: {
-    addTask(e) {
-      console.log("working");
-      console.log(e);
-      console.log(this.newId);
-      console.log(this.name);
-      console.log(this.description);
-      console.log(this.date);
-      this.$store.dispatch("task_add", e);
+    addTask() {
+      const newTask = {
+        id: this.id,
+        name: this.name,
+        title: this.title,
+        date: this.date,
+        completed: false,
+        status: "Not Done",
+      };
+      // console.log(newTask);
+      this.$store.dispatch("task_add", newTask);
+      this.$router.push({ path: "/" });
       // this.newId;
       // this.name;
       // this.description;

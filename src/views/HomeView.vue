@@ -4,18 +4,21 @@
     <v-content v-else class="mx-0 md:mx-10">
       <v-card v-for="task in tasks" :key="task.id" class="mb-2">
         <v-row align="center">
-          <v-btn>
+          <v-col cols="2">
             <v-checkbox
               v-model="task.completed"
               @click="onComplete(task.id, task.completed)"
               class="ml-5"
             ></v-checkbox>
-          </v-btn>
+          </v-col>
 
-          <v-snackbar>
-            <v-col cols="2">
-              <v-card-text>{{ task.status }}</v-card-text>
-            </v-col>
+          <v-snackbar v-model="snackbar" :multi-line="multiLine">
+            {{ text }}
+            <template v-slot:action="{ attrs }">
+              <v-btn color="red" text v-bind="attrs" @click="snackbar = false">
+                Close
+              </v-btn>
+            </template>
           </v-snackbar>
 
           <v-col cols="7">
@@ -47,6 +50,9 @@ export default {
     return {
       // tasks: [],
       isLoading: true,
+      multiLine: true,
+      snackbar: false,
+      text: null,
     };
   },
   methods: {
@@ -57,9 +63,11 @@ export default {
         if (task.id === id) {
           task.completed = completed;
           task.status = completed ? "Done" : "Not Done";
+          this.text = task.status;
           //   console.log(task);
         }
       });
+      this.snackbar = true;
     },
     ...mapActions(["task_index", "task_delete"]),
   },
