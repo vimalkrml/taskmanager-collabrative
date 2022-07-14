@@ -68,7 +68,7 @@
         >
       </v-content>
     </v-form>
-    <v-snackbar v-model="snackbar" top>
+    <v-snackbar v-model="snackbar" light>
       {{ text }}
 
       <template v-slot:action="{ attrs }">
@@ -123,7 +123,6 @@ export default {
       };
       // console.log(newTask);
       this.$store.dispatch("task_add", newTask);
-      this.$refs.form.validate();
       // this.newId;
       // this.name;
       // this.description;
