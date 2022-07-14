@@ -1,8 +1,15 @@
 <template>
-  <v-footer absolute color="thin" dark class="py-3">
-    <v-col class="text-center" cols="12">
+  <v-footer fixed color="thin" dark padless class="py-3">
+    <v-card
+      tile
+      flat
+      width="100%"
+      dark
+      height="50px"
+      class="d-flex align-center justify-center"
+    >
       <h1>&copy;2022 — <span class="font-bold">Team Collab</span></h1>
-    </v-col>
+    </v-card>
   </v-footer>
 </template>
 
