@@ -34,7 +34,7 @@
           <v-col cols="2">
             <v-btn
               :class="{ 'line-through text-gray-400': task.completed }"
-              dark
+              icon
               class="font-bold"
               >{{ task.date }}</v-btn
             >
