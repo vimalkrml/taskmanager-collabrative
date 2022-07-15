@@ -17,6 +17,9 @@ export default {
     NavBar,
     FooterBar,
   },
+  mounted() {
+    console.log(process.env.VUE_APP_ID);
+  },
 };
 </script>
 
