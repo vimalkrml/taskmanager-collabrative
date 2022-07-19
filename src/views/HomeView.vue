@@ -82,7 +82,7 @@ export default {
       });
       this.snackbar = true;
     },
-    ...mapActions(["task_index", "task_delete"]),
+    ...mapActions("tasks", ["task_index", "task_delete"]),
   },
   mounted() {
     this.task_index();

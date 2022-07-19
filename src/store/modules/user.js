@@ -1,5 +1,8 @@
 export default {
     namespaced: true,
+    data() {
+
+    },
     state: {
         users: [],
         user: {},
