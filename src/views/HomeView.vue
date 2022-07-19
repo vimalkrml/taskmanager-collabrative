@@ -19,9 +19,7 @@
               </v-btn>
             </template>
           </v-snackbar>
-
           <v-col cols="4">
-            {{ get_username(task.user_id) }}
             <v-card-title
               :class="{ 'line-through text-gray-400': task.completed }"
               v-html="task.name"
@@ -31,6 +29,7 @@
           </v-col>
           <v-spacer />
 
+          <v-col col="2">{{ get_username(task.user_id) }}</v-col>
           <v-col cols="2">
             <v-btn
               :class="{ 'line-through text-gray-400': task.completed }"
