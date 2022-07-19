@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import NavBar from "./components/NavBar.vue";
 import FooterBar from "./components/FooterBar.vue";
 
@@ -17,8 +18,12 @@ export default {
     NavBar,
     FooterBar,
   },
+  methods: {
+    ...mapActions("user", ["user_show"]),
+  },
   mounted() {
-    console.log(process.env.VUE_APP_ID);
+    console.log(process.env.VUE_APP_CURRENT_USER_ID);
+    this.user_show(process.env.VUE_APP_CURRENT_USER_ID);
   },
 };
 </script>

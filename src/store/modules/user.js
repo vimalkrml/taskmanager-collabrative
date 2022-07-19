@@ -1,8 +1,5 @@
 export default {
     namespaced: true,
-    data() {
-
-    },
     state: {
         users: [],
         user: {},
@@ -28,7 +25,7 @@ export default {
         },
         USER_SHOW(state, payload) {
             state.user = payload;
-        }
+        },
     },
 
     actions: {
@@ -60,8 +57,8 @@ export default {
             const response = await fetch("http://localhost:3000/users/" + payload);
             const json = await response.json();
             console.log(json);
-            context.commit("USER_SHOW", json)
-        }
+            context.commit("USER_SHOW", json);
+        },
     },
     getters: {
         getUsers: (state) => state.users,

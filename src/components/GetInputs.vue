@@ -82,12 +82,14 @@
 
 <script>
 import TipTapVue from "./Tip-Tap.vue";
+import { mapState, mapActions } from "vuex";
 export default {
   components: {
     TipTapVue,
   },
 
   data: () => ({
+    user_id: "",
     valid: false,
     name: "",
     title: "",
@@ -110,10 +112,16 @@ export default {
     snackbar: false,
     text: "Successfully Submitted",
   }),
+  computed: {
+    ...mapState("user", ["users"]),
+  },
   methods: {
+    ...mapActions("task", ["task_add"]),
     addTask() {
       this.snackbar = true;
+      this.getCurrentUser();
       const newTask = {
+        user_id: this.user_id,
         id: this.id,
         name: this.name,
         title: this.title,
@@ -121,8 +129,9 @@ export default {
         completed: false,
         status: "Not Done",
       };
+
       // console.log(newTask);
-      this.$store.dispatch("task_add", newTask);
+      this.task_add(newTask);
       // this.newId;
       // this.name;
       // this.description;
@@ -130,6 +139,12 @@ export default {
     close() {
       this.snackbar = false;
       this.$router.push({ path: "/" });
+    },
+    getCurrentUser() {
+      let currentUser = this.users.filter(
+        (user) => user.id === process.env.VUE_APP_CURRENT_USER_ID
+      );
+      this.user_id = currentUser.id;
     },
   },
 };
