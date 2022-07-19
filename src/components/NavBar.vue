@@ -12,20 +12,10 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
-
+import { mapState } from "vuex";
 export default {
-  methods: {
-    ...mapActions("user", ["user_show", "user_index"]),
-  },
-  computed: mapState("user", {
-    user(state) {
-      return state.user;
-    },
-  }),
-  mounted() {
-    this.user_show(1);
-    this.user_index();
+  computed: {
+    ...mapState("user", ["user"]),
   },
 };
 </script>
