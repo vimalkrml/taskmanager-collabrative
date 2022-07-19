@@ -3,6 +3,7 @@ export default {
   state: {
     users: [],
     user: {},
+    current_id: '', 
   },
   mutations: {
     USER_INDEX(state, users) {
@@ -26,6 +27,9 @@ export default {
     USER_SHOW(state, payload) {
       state.user = payload;
     },
+    USER_LOGIN(state, payload) {
+      state.current_id = payload
+    }
   },
 
   actions: {
@@ -59,6 +63,9 @@ export default {
       console.log(json);
       context.commit("USER_SHOW", json);
     },
+    user_login: (context, payload) => {
+      context.commit('USER_LOGIN', payload);
+    }
   },
   getters: {
     getUsers: (state) => state.users,
