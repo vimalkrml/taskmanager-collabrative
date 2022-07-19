@@ -37,7 +37,7 @@ export default {
             const data = await res.json();
             console.log(data);
 
-            context.commit("USERS_INDEX", data);
+            context.commit("USER_INDEX", data);
         },
         user_delete: async (context, payload) => {
             context.commit("USER_DELETE", payload);
@@ -58,12 +58,13 @@ export default {
         },
         user_show: async (context, payload) => {
             const response = await fetch("http://localhost:3000/users/" + payload);
-            const json = response.json();
+            const json = await response.json();
             console.log(json);
             context.commit("USER_SHOW", json)
         }
     },
     getters: {
-        getusers: (state) => state.users,
+        getUsers: (state) => state.users,
+        getUser: (state) => state.user,
     },
 };

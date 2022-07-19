@@ -29,10 +29,7 @@ export default {
       // console.log(state.tasks);
     },
     TASK_ADD(state, payload) {
-      console.log(state.tasks);
-      // JSON.parse(JSON.stringify(state.tasks)).push(payload);
       state.tasks.push(payload);
-      // console.log(payload)
     },
   },
 
@@ -40,8 +37,6 @@ export default {
     task_index: async (context) => {
       const res = await fetch("http://localhost:3000/tasks");
       const data = await res.json();
-      console.log(data);
-
       context.commit("TASKS_INDEX", data);
     },
     task_complete: (context, payload) => {
