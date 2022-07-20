@@ -1,5 +1,5 @@
 <template>
-  <v-main>
+  <!-- <v-main>
     <v-toolbar-title
       ><v-btn depressed to="/create">Create Task</v-btn></v-toolbar-title
     >
@@ -27,8 +27,8 @@
               :class="{ 'line-through text-gray-400': task.completed }"
               v-html="task.name"
             >
-              <!-- {{ task.title }} -->
-            </v-card-title>
+               {{ task.title }}
+   </v-card-title>
           </v-col>
           <v-spacer />
 
@@ -55,6 +55,77 @@
         </v-row>
       </v-card>
     </v-content>
+  </v-main> -->
+  <v-main>
+    <v-simple-table>
+      <template v-slot:default>
+        <thead>
+          <tr>
+            <th class="text-left">Done</th>
+            <th class="text-left">Name</th>
+            <th class="text-left">Description</th>
+            <th class="text-left">Modified By</th>
+            <th class="text-left">Added By</th>
+            <th class="text-left">Date Added</th>
+            <th class="text-left">Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="task in tasks" :key="task.id">
+            <td class="text-left">
+              <v-checkbox
+                v-model="task.completed"
+                @click="onComplete(task.id, task.completed)"
+              ></v-checkbox>
+
+              <v-snackbar v-model="snackbar" :multi-line="multiLine">
+                {{ text }}
+                <template v-slot:action="{ attrs }">
+                  <v-btn
+                    color="red"
+                    text
+                    v-bind="attrs"
+                    @click="snackbar = false"
+                  >
+                    Close
+                  </v-btn>
+                </template>
+              </v-snackbar>
+            </td>
+            <td
+              class="text-left"
+              :class="{ 'line-through text-gray-400': task.completed }"
+              v-html="task.name"
+            ></td>
+            <td class="text-left" v-html="task.title"></td>
+            <td class="text-left">
+              {{ get_username(task.user_id) }}
+            </td>
+            <td class="text-left">
+              {{ get_username(task.user_id) }}
+            </td>
+            <td class="text-left">
+              <v-btn
+                :class="{ 'line-through text-gray-400': task.completed }"
+                icon
+                class="font-bold"
+                >{{ task.date }}</v-btn
+              >
+            </td>
+            <td class="text-left">
+              <lord-icon
+                @click="task_delete(task.id)"
+                src="https://cdn.lordicon.com/qsloqzpf.json"
+                trigger="hover"
+                colors="primary:#121331"
+                class="cursor-pointer w-7"
+              >
+              </lord-icon>
+            </td>
+          </tr>
+        </tbody>
+      </template>
+    </v-simple-table>
   </v-main>
 </template>
 
