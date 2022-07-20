@@ -1,6 +1,6 @@
 <template>
   <v-content>
-    <v-card-title>Add New Task - {{ current_id }}</v-card-title>
+    <v-btn plain disabled>Add New Task - User {{ current_id }}</v-btn>
     <v-form @submit.prevent="addTask" id="task_add_form" v-model="valid">
       <v-container>
         <v-row>
@@ -25,16 +25,6 @@
               </template>
             </tip-tap-vue>
           </v-col>
-          <!-- <v-col cols="10">
-            <v-select
-              v-model="select"
-              :items="items"
-              :rules="[(v) => !!v || 'Status is required']"
-              label="Status"
-              required
-            ></v-select>
-          </v-col> -->
-
           <v-col cols="12" class="border bg-gray-200">
             <v-menu
               v-model="menu2"
@@ -134,9 +124,6 @@ export default {
 
       console.log(newTask);
       this.task_add(newTask);
-      // this.newId;
-      // this.name;
-      // this.description;
     },
     close() {
       this.snackbar = false;
