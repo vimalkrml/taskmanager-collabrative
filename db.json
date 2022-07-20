@@ -35,38 +35,26 @@
       "date": "2022-07-19",
       "completed": false,
       "status": "Not Done"
-    },
-    {
-      "user_id": "1",
-      "id": 684,
-      "name": "New task 1",
-      "title": "<h1>Hello World, Hadi</h1>",
-      "date": "2022-07-19",
-      "completed": false,
-      "status": "Not Done"
-    },
-    {
-      "user_id": "3",
-      "id": 255,
-      "name": "new task",
-      "title": "<p>ddddd</p>",
-      "date": "2022-07-19",
-      "completed": false,
-      "status": "Not Done"
     }
   ],
   "users": [
     {
       "id": 1,
-      "name": "Vimal"
+      "name": "Vimal",
+      "email": "vimal@gmail.com",
+      "imageurl": "https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"
     },
     {
       "id": 2,
-      "name": "Gokul"
+      "name": "Gokul",
+      "email": "gokul@gmail.com",
+      "imageurl": "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
     },
     {
       "id": 3,
-      "name": "Karthik"
+      "name": "Karthik",
+      "email": "karthik@gmail.com",
+      "imageurl": "https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
     }
   ]
 }

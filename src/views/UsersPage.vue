@@ -1,5 +1,6 @@
 <template>
   <v-main>
+    <v-toolbar-title><v-btn to="/create">Create</v-btn></v-toolbar-title>
     <v-card v-for="user in users" :key="user.id" class="mb-2" hover>
       <v-row align="center">
         <v-col cols="2">
