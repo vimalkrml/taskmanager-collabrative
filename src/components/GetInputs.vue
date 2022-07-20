@@ -124,10 +124,10 @@ export default {
 
       console.log(newTask);
       this.task_add(newTask);
+      this.$router.push({ path: "/" });
     },
     close() {
       this.snackbar = false;
-      this.$router.push({ path: "/" });
     },
   },
 };

@@ -1,7 +1,7 @@
 <template>
   <v-main>
-    <v-btn class="mb-5" depressed to="/create">Create Task</v-btn>
-    <v-btn class="mb-5" plain loading v-if="isLoading"></v-btn>
+    <v-btn class="my-5" depressed to="/create">Create Task</v-btn>
+    <v-btn class="my-5" plain loading v-if="isLoading"></v-btn>
     <v-simple-table v-else>
       <template v-slot:default>
         <thead>
@@ -10,6 +10,7 @@
             <th class="text-left">Name</th>
             <th class="text-left">Description</th>
             <th class="text-left">Modified By</th>
+            <th class="text-left">Completed By</th>
             <th class="text-left">Added By</th>
             <th class="text-left">Date Added</th>
             <th class="text-left">Remove</th>
@@ -43,9 +44,8 @@
               v-html="task.name"
             ></td>
             <td class="text-left" v-html="task.title"></td>
-            <td class="text-left">
-              {{ get_username(task.user_id) }}
-            </td>
+            <td class="text-left">-</td>
+            <td class="text-left">-</td>
             <td class="text-left">
               {{ get_username(task.user_id) }}
             </td>

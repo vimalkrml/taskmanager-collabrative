@@ -3,6 +3,7 @@ export default {
   state: {
     tasks: [],
     task: {},
+    toast: ''
   },
   mutations: {
     TASKS_INDEX(state, tasks) {
