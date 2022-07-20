@@ -26,15 +26,6 @@
       "date": "2022-07-19",
       "completed": false,
       "status": "Not Done"
-    },
-    {
-      "user_id": "1",
-      "id": 56,
-      "name": "New Task",
-      "title": "<h1>Hello</h1>",
-      "date": "2022-07-19",
-      "completed": false,
-      "status": "Not Done"
     }
   ],
   "users": [
