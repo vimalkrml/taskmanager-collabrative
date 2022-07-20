@@ -1,19 +1,15 @@
 <template>
   <v-app-bar color="thin" dark fixed app>
-    <v-app-bar-title><v-btn to="/">Tasks</v-btn></v-app-bar-title>
-    <v-app-bar-title> <v-btn to="/users">Users</v-btn></v-app-bar-title>
-    <v-spacer />
-    <v-row justify="center">
+    <v-row class="items-center justify-between">
+      <v-app-bar-title
+        ><v-btn to="/">Tasks</v-btn>
+        <v-btn to="/users">Users</v-btn></v-app-bar-title
+      >
       <v-app-bar-title class="uppercase">Task Manager </v-app-bar-title>
-    </v-row>
-
-    <v-spacer />
-
-    <v-row justify="end">
       <v-menu bottom min-width="200px" rounded offset-y>
         <template v-slot:activator="{ on }">
           <v-btn icon x-large v-on="on">
-            <v-avatar size="35">
+            <v-avatar size="38">
               <img :src="user.imageurl" />
             </v-avatar>
           </v-btn>
