@@ -21,6 +21,7 @@
           </v-snackbar>
 
           <v-col cols="4">
+            {{ get_username(task.user_id) }}
             <v-card-title
               :class="{ 'line-through text-gray-400': task.completed }"
               v-html="task.name"
@@ -78,10 +79,13 @@ export default {
       });
       this.snackbar = true;
     },
-    get_user(id) {
-      console.log(this.users.filter((user) => user.id === id));
-      return this.users.filter((user) => user.id === id);
+
+    get_username(user_id) {
+      const currentUser = this.users.filter((user) => user.id == user_id);
+      console.log(currentUser[0].name);
+      return currentUser[0].name;
     },
+
     ...mapActions("task", ["task_index", "task_delete"]),
     ...mapActions("user", ["user_index"]),
   },
@@ -93,11 +97,7 @@ export default {
     }, 2000);
   },
   computed: {
-    ...mapState("user", {
-      users(state) {
-        return state.users;
-      },
-    }),
+    ...mapState("user", ["users"]),
     ...mapState("task", {
       tasks(state) {
         return state.tasks;

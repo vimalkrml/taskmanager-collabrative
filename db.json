@@ -1,7 +1,7 @@
 {
   "tasks": [
     {
-      "user_id": 1,
+      "user_id": "1",
       "id": 807,
       "name": "sleep",
       "title": "<p><em>sgseg</em></p>",
@@ -10,7 +10,7 @@
       "status": "Done"
     },
     {
-      "user_id": 1,
+      "user_id": "1",
       "id": 436,
       "name": "New code",
       "title": "<p><strong><em><u>wegwsegwesg</u></em></strong></p>",
@@ -19,9 +19,28 @@
       "status": "Done"
     },
     {
+      "user_id": "1",
       "id": 82,
       "name": "dddd",
       "title": "<p>sfsfsf</p>",
+      "date": "2022-07-19",
+      "completed": false,
+      "status": "Not Done"
+    },
+    {
+      "user_id": "1",
+      "id": 56,
+      "name": "New Task",
+      "title": "<h1>Hello</h1>",
+      "date": "2022-07-19",
+      "completed": false,
+      "status": "Not Done"
+    },
+    {
+      "user_id": "1",
+      "id": 684,
+      "name": "New task 1",
+      "title": "<h1>Hello World, Hadi</h1>",
       "date": "2022-07-19",
       "completed": false,
       "status": "Not Done"

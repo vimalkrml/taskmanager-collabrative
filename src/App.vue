@@ -19,11 +19,11 @@ export default {
     FooterBar,
   },
   methods: {
-    ...mapActions("user", ["user_show"]),
+    ...mapActions("user", ["user_show", "user_login"]),
   },
   mounted() {
-    console.log(process.env.VUE_APP_CURRENT_USER_ID);
     this.user_show(process.env.VUE_APP_CURRENT_USER_ID);
+    this.user_login(process.env.VUE_APP_CURRENT_USER_ID);
   },
 };
 </script>

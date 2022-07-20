@@ -1,6 +1,6 @@
 <template>
   <v-content>
-    <v-card-title>Add New Task</v-card-title>
+    <v-card-title>Add New Task - {{ current_id }}</v-card-title>
     <v-form @submit.prevent="addTask" id="task_add_form" v-model="valid">
       <v-container>
         <v-row>
@@ -113,15 +113,17 @@ export default {
     text: "Successfully Submitted",
   }),
   computed: {
-    ...mapState("user", ["users"]),
+    ...mapState("user", ["current_id"]),
   },
   methods: {
     ...mapActions("task", ["task_add"]),
     addTask() {
       this.snackbar = true;
-      this.getCurrentUser();
+
+      console.log(this.current_id);
+
       const newTask = {
-        user_id: this.user_id,
+        user_id: this.current_id,
         id: this.id,
         name: this.name,
         title: this.title,
@@ -130,7 +132,7 @@ export default {
         status: "Not Done",
       };
 
-      // console.log(newTask);
+      console.log(newTask);
       this.task_add(newTask);
       // this.newId;
       // this.name;
@@ -139,12 +141,6 @@ export default {
     close() {
       this.snackbar = false;
       this.$router.push({ path: "/" });
-    },
-    getCurrentUser() {
-      let currentUser = this.users.filter(
-        (user) => user.id === process.env.VUE_APP_CURRENT_USER_ID
-      );
-      this.user_id = currentUser.id;
     },
   },
 };
