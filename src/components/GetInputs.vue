@@ -68,7 +68,7 @@
         >
       </v-content>
     </v-form>
-    <v-snackbar v-model="snackbar" light>
+    <!-- <v-snackbar v-model="snackbar" light>
       {{ text }}
 
       <template v-slot:action="{ attrs }">
@@ -76,7 +76,7 @@
           Close
         </v-btn>
       </template>
-    </v-snackbar>
+    </v-snackbar> -->
   </v-content>
 </template>
 
@@ -133,6 +133,7 @@ export default {
       };
 
       console.log(newTask);
+      this.$router.push({ path: "/" });
       this.task_add(newTask);
       // this.newId;
       // this.name;
@@ -140,7 +141,6 @@ export default {
     },
     close() {
       this.snackbar = false;
-      this.$router.push({ path: "/" });
     },
   },
 };

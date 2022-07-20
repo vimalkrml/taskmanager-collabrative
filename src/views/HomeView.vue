@@ -4,16 +4,17 @@
       ><v-btn depressed to="/create">Create Task</v-btn></v-toolbar-title
     >
     <v-btn class="mt-20" plain loading v-if="isLoading"></v-btn>
+
     <v-content v-else class="mx-0 md:mx-10">
+      <div class="border-2 border-red-300 p-10 mb-5"></div>
       <v-card v-for="task in tasks" :key="task.id" class="mb-2" hover>
         <v-row align="center">
-          <v-col cols="2">
-            <v-checkbox
-              v-model="task.completed"
-              @click="onComplete(task.id, task.completed)"
-              class="ml-5"
-            ></v-checkbox>
-          </v-col>
+          <v-checkbox
+            v-model="task.completed"
+            @click="onComplete(task.id, task.completed)"
+            class="ml-5"
+          ></v-checkbox>
+
           <v-snackbar v-model="snackbar" :multi-line="multiLine">
             {{ text }}
             <template v-slot:action="{ attrs }">
@@ -22,7 +23,7 @@
               </v-btn>
             </template>
           </v-snackbar>
-          <v-col cols="4">
+          <v-col cols="3">
             <v-card-title
               :class="{ 'line-through text-gray-400': task.completed }"
               v-html="task.name"
@@ -32,7 +33,7 @@
           </v-col>
           <v-spacer />
 
-          <v-col col="2">{{ get_username(task.user_id) }}</v-col>
+          <v-col cols="2">Created By: {{ get_username(task.user_id) }}</v-col>
           <v-col cols="2">
             <v-btn
               :class="{ 'line-through text-gray-400': task.completed }"
@@ -80,11 +81,12 @@ export default {
         }
       });
       this.snackbar = true;
+      console.log(this.users);
     },
 
     get_username(user_id) {
       const currentUser = this.users.filter((user) => user.id == user_id);
-      console.log(currentUser[0].name);
+      // console.log(currentUser[0].name);
       return currentUser[0].name;
     },
 
@@ -96,7 +98,7 @@ export default {
     this.task_index();
     setTimeout(() => {
       this.isLoading = false;
-    }, 2000);
+    }, 1000);
   },
   computed: {
     ...mapState("user", ["users"]),
