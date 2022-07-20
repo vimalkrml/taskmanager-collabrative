@@ -1,6 +1,14 @@
 <template>
   <v-main>
     <v-btn class="my-5" depressed to="/create">Create Task</v-btn>
+    <v-snackbar v-model="toast" light>
+      {{ toast }}
+      <template v-slot:action="{ attrs }">
+        <v-btn color="indigo" text v-bind="attrs" @click="task_toast_remove()">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
     <v-btn class="my-5" plain loading v-if="isLoading"></v-btn>
     <v-simple-table v-else>
       <template v-slot:default>
@@ -27,14 +35,7 @@
               <v-snackbar v-model="snackbar" :multi-line="multiLine">
                 {{ text }}
                 <template v-slot:action="{ attrs }">
-                  <v-btn
-                    color="red"
-                    text
-                    v-bind="attrs"
-                    @click="snackbar = false"
-                  >
-                    Close
-                  </v-btn>
+                  <v-btn color="red" text v-bind="attrs"> Close </v-btn>
                 </template>
               </v-snackbar>
             </td>
@@ -104,7 +105,7 @@ export default {
       return currentUser[0].name;
     },
 
-    ...mapActions("task", ["task_index", "task_delete"]),
+    ...mapActions("task", ["task_index", "task_delete", "task_toast_remove"]),
     ...mapActions("user", ["user_index"]),
   },
   mounted() {
@@ -119,6 +120,9 @@ export default {
     ...mapState("task", {
       tasks(state) {
         return state.tasks;
+      },
+      toast(state) {
+        return state.toast;
       },
     }),
   },
