@@ -1,6 +1,8 @@
 <template>
   <v-main>
-    <v-toolbar-title><v-btn to="/create">Create</v-btn></v-toolbar-title>
+    <v-toolbar-title
+      ><v-btn depressed to="/create">Create Task</v-btn></v-toolbar-title
+    >
     <v-btn class="mt-20" plain loading v-if="isLoading"></v-btn>
     <v-content v-else class="mx-0 md:mx-10">
       <v-card v-for="task in tasks" :key="task.id" class="mb-2" hover>
