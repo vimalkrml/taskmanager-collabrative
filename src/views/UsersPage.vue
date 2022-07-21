@@ -39,11 +39,6 @@
 <script>
 import { mapActions, mapState } from "vuex";
 export default {
-  data() {
-    return {
-      isLoading: true,
-    };
-  },
   methods: {
     ...mapActions("user", ["user_index", "user_delete"]),
   },
@@ -52,9 +47,6 @@ export default {
   },
   mounted() {
     this.user_index();
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 1000);
   },
 };
 </script>

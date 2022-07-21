@@ -12,7 +12,6 @@
               label="Name"
               required
             ></v-text-field>
-            {{ errors.name }}
           </v-col>
           <v-col cols="12" class="border bg-gray-200 mb-2">
             <tip-tap-vue
@@ -26,7 +25,6 @@
               </template>
             </tip-tap-vue>
           </v-col>
-          {{ errors.title }}
           <v-col cols="12" class="border bg-gray-200">
             <v-menu
               v-model="menu2"
@@ -76,10 +74,8 @@ export default {
     valid: false,
     name: "",
     title: "",
-    errors: {
-      name: "",
-    },
     id: Math.floor(Math.random() * 1000),
+
     nameRules: [
       (v) => !!v || "Name is required",
       (v) => v.length <= 15 || "Name must be less than 15 characters",
@@ -94,6 +90,7 @@ export default {
     menu: false,
     modal: false,
     menu2: false,
+    snackbar: false,
     text: "Successfully Submitted",
   }),
   computed: {
@@ -102,6 +99,10 @@ export default {
   methods: {
     ...mapActions("task", ["task_add"]),
     addTask() {
+      this.snackbar = true;
+
+      console.log(this.current_id);
+
       const newTask = {
         user_id: this.current_id,
         id: this.id,
@@ -110,14 +111,15 @@ export default {
         date: this.date,
         completed: false,
         status: "Not Done",
-        completedby: this.current_id,
+        completedBy: "-",
       };
 
-      if (this.validate(newTask)) {
-        console.log(newTask);
-        this.task_add(newTask);
-        this.$router.push({ path: "/" });
-      }
+      console.log(newTask);
+      this.$router.push({ path: "/" });
+      this.task_add(newTask);
+      // this.newId;
+      // this.name;
+      // this.description;
     },
     validate({ name }) {
       console.log(name);

@@ -6,8 +6,9 @@
       "name": "sleep",
       "title": "<p><em>sgseg</em></p>",
       "date": "2022-02-23",
-      "completed": true,
-      "status": "Done"
+      "completed": false,
+      "status": "Not Done",
+      "completedBy": "-"
     },
     {
       "user_id": "1",
@@ -15,8 +16,9 @@
       "name": "New code",
       "title": "<p><strong><em><u>wegwsegwesg</u></em></strong></p>",
       "date": "2022-12-08",
-      "completed": false,
-      "status": "Not Done"
+      "completed": true,
+      "status": "Done",
+      "completedBy": "Karthik"
     },
     {
       "user_id": "3",
@@ -25,17 +27,8 @@
       "title": "<h3><strong>cold</strong></h3>",
       "date": "2022-07-21",
       "completed": false,
-      "status": "Not Done"
-    },
-    {
-      "user_id": "3",
-      "id": 428,
-      "name": "games",
-      "title": "<p>sdg</p>",
-      "date": "2022-07-21",
-      "completed": false,
       "status": "Not Done",
-      "completedby": "3"
+      "completedBy": "-"
     }
   ],
   "users": [

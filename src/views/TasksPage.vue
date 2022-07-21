@@ -59,7 +59,7 @@
               ></td>
               <td class="text-left" v-html="task.title"></td>
               <td class="text-left">-</td>
-              <td class="text-left">{{ completedby }}</td>
+              <td class="text-left">{{ task.completedBy }}</td>
               <td class="text-left">
                 {{ get_username(task.user_id) }}
               </td>
@@ -104,7 +104,9 @@ export default {
   },
   methods: {
     onComplete(id, completed) {
-      this.$store.dispatch("task/task_complete", { id, completed });
+      // console.log(this.$store.state.user.current_id);
+      let current_id = this.$store.state.user.current_id;
+      this.$store.dispatch("task/task_complete", { id, completed, current_id });
       this.tasks.forEach((task) => {
         if (task.id === id) {
           task.completed = completed;
@@ -112,14 +114,14 @@ export default {
           this.text = task.status;
           this.completedby = this.currentuser;
         }
-        this.snackbar = true;
       });
+
+      this.snackbar = true;
     },
 
     get_username(user_id) {
       const currentUser = this.users.filter((user) => user.id == user_id);
-      console.log(currentUser[0].name);
-      this.currentuser = currentUser[0].name;
+      // console.log(currentUser[0].name);
       return currentUser[0].name;
     },
     // task_modify() {},
@@ -132,7 +134,7 @@ export default {
     this.task_index();
     setTimeout(() => {
       this.isLoading = false;
-    }, 2500);
+    }, 1000);
   },
   computed: {
     ...mapState("user", ["users"]),

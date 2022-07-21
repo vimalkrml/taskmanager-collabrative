@@ -3,7 +3,6 @@ export default {
   state: {
     tasks: [],
     task: {},
-    toast: ''
   },
   mutations: {
     TASKS_INDEX(state, tasks) {
@@ -13,10 +12,20 @@ export default {
     },
     TASK_COMPLETE(state, payload) {
       //   console.log(state.tasks);
+      console.log(this.state.user.users);
+      console.log(payload.current_id);
+      let name = "";
+      this.state.user.users.forEach((user) => {
+        if (user.id == payload.current_id) {
+          name = user.name;
+        }
+      });
       state.tasks.forEach((task) => {
         if (task.id === payload.id) {
           task.completed = payload.completed;
-          task.status = true;
+          task.status = payload.completed ? "Done" : "Not Done";
+          task.completedBy = payload.completed ? name : "-";
+
           //   console.log(task);
         }
       });
@@ -32,12 +41,6 @@ export default {
     TASK_ADD(state, payload) {
       state.tasks.push(payload);
     },
-    TASK_TOAST_ADD(state, payload) {
-      state.toast = payload;
-    },
-    TASK_TOAST_REMOVE(state) {
-      state.toast = '';
-    },
   },
 
   actions: {
@@ -48,11 +51,19 @@ export default {
     },
     task_complete: async (context, payload) => {
       context.commit("TASK_COMPLETE", payload);
+
+      const res = await fetch(
+        "http://localhost:3000/users/" + payload.current_id
+      );
+      const data = await res.json();
+      // console.log(data);
+
       const updateRequest = {
         method: "PATCH",
         body: JSON.stringify({
           completed: payload.completed,
           status: payload.completed ? "Done" : "Not Done",
+          completedBy: payload.completed ? await data.name : "-",
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -66,7 +77,7 @@ export default {
         method: "DELETE",
       });
     },
-    task_add: async (context, payload) => {
+    task_add: (context, payload) => {
       context.commit("TASK_ADD", payload);
       const newTask = { ...payload };
       // console.log(newTask);
@@ -75,12 +86,8 @@ export default {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newTask),
       };
-      await fetch("http://localhost:3000/tasks", requestOptions);
-      context.commit('TASK_TOAST_ADD', 'Task created successfully!');
+      fetch("http://localhost:3000/tasks", requestOptions);
     },
-    task_toast_remove: (context) => {
-      context.commit('TASK_TOAST_REMOVE');
-    }
   },
   getters: {
     getTasks: (state) => state.tasks,
