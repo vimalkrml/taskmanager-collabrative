@@ -1,7 +1,7 @@
 <template>
   <div class="w-[]">
     <h1 class="my-5 uppercase font-mono text-zinc-500">Add New Task</h1>
-    <v-form @submit.prevent="addTask" id="task_add_form" v-model="valid">
+    <v-form @submit.prevent="task_edit" id="task_add_form" v-model="valid">
       <v-container>
         <v-row>
           <v-col cols="12" class="border bg-gray-200 mb-2">
@@ -60,8 +60,10 @@
 </template>
 
 <script>
+// import { mapActions } from "vuex";
 import TipTapVue from "./TipTap.vue";
 export default {
+  props: ["id"],
   components: {
     TipTapVue,
   },
@@ -71,7 +73,6 @@ export default {
     valid: false,
     name: "",
     title: "",
-    id: Math.floor(Math.random() * 1000),
 
     nameRules: [
       (v) => !!v || "Name is required",
@@ -90,6 +91,19 @@ export default {
     snackbar: false,
     text: "Successfully Submitted",
   }),
+  methods: {
+    task_edit() {
+      const editedData = {
+        name: this.name,
+        title: this.title,
+        date: this.date,
+      };
+      let id = this.id;
+      // console.log(this.title, this.name, this.date);
+      this.$emit("tasksub", true);
+      this.$store.dispatch("task/task_edit", { editedData, id });
+    },
+  },
 };
 </script>
 

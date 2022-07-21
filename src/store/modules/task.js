@@ -41,6 +41,15 @@ export default {
     TASK_ADD(state, payload) {
       state.tasks.push(payload);
     },
+    TASK_EDIT(state, payload) {
+      state.tasks.forEach((task) => {
+        if (task.id == payload.id) {
+          task.name = payload.editedData.name;
+          task.title = payload.editedData.title;
+          task.date = payload.editedData.date;
+        }
+      });
+    },
   },
 
   actions: {
@@ -87,6 +96,18 @@ export default {
         body: JSON.stringify(newTask),
       };
       fetch("http://localhost:3000/tasks", requestOptions);
+    },
+    async task_edit(context, payload) {
+      console.log(context, payload);
+      context.commit("TASK_EDIT", payload);
+      const editTask = { ...payload.editedData };
+      // console.log(editTask);
+      const requestOptions = {
+        method: "PATCH",
+        headers: { "Content-type": "application/json; charset=UTF-8" },
+        body: JSON.stringify(editTask),
+      };
+      await fetch("http://localhost:3000/tasks/" + payload.id, requestOptions);
     },
   },
   getters: {
