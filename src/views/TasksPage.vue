@@ -59,7 +59,7 @@
                 v-html="task.name"
               ></td>
               <td class="text-left" v-html="task.title"></td>
-              <td class="text-left">-</td>
+              <td class="text-left">{{ task.modifiedby }}</td>
               <td class="text-left">{{ task.completedBy }}</td>
               <td class="text-left">
                 {{ get_username(task.user_id) }}
@@ -121,7 +121,8 @@ export default {
       text: null,
       currentuser: "",
       completedby: "",
-      localState: false,
+      modifiedby: "",
+      localState: "",
       userId: "",
     };
   },
@@ -135,7 +136,6 @@ export default {
           task.completed = completed;
           task.status = completed ? "Done" : "Not Done";
           this.text = task.status;
-          this.completedby = this.currentuser;
         }
       });
 
@@ -154,11 +154,11 @@ export default {
     },
     tasksub(val) {
       console.log(val);
+
       this.localState = val;
       console.log(this.localState);
     },
     // task_modify() {},
-
     ...mapActions("task", ["task_index", "task_delete", "task_toast_remove"]),
     ...mapActions("user", ["user_index"]),
   },

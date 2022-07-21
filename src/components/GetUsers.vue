@@ -33,11 +33,11 @@
           </v-col>
         </v-row>
       </v-container>
-      <v-content>
+      <div class="my-5">
         <v-btn type="submit" form="task_add_form" color="thin" dark
           >ADD USER</v-btn
         >
-      </v-content>
+      </div>
     </v-form>
   </v-main>
 </template>

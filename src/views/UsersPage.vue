@@ -39,6 +39,11 @@
 <script>
 import { mapActions, mapState } from "vuex";
 export default {
+  data() {
+    return {
+      isLoading: false,
+    };
+  },
   methods: {
     ...mapActions("user", ["user_index", "user_delete"]),
   },

@@ -52,11 +52,11 @@
           </v-col>
         </v-row>
       </v-container>
-      <v-content>
+      <div class="my-5">
         <v-btn type="submit" form="task_add_form" color="thin" dark
           >Add Task</v-btn
         >
-      </v-content>
+      </div>
     </v-form>
   </v-main>
 </template>
@@ -112,14 +112,12 @@ export default {
         completed: false,
         status: "Not Done",
         completedBy: "-",
+        modifiedby: "-",
       };
 
       console.log(newTask);
       this.$router.push({ path: "/" });
       this.task_add(newTask);
-      // this.newId;
-      // this.name;
-      // this.description;
     },
     validate({ name }) {
       console.log(name);

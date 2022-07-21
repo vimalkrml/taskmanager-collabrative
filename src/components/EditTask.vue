@@ -52,9 +52,9 @@
           </v-col>
         </v-row>
       </v-container>
-      <v-content>
+      <div class="my-5">
         <v-btn type="submit" form="task_add_form" color="thin" dark>Save</v-btn>
-      </v-content>
+      </div>
     </v-form>
   </div>
 </template>
@@ -100,7 +100,7 @@ export default {
       };
       let id = this.id;
       // console.log(this.title, this.name, this.date);
-      this.$emit("tasksub", true);
+      this.$emit("tasksub", false);
       this.$store.dispatch("task/task_edit", { editedData, id });
     },
   },
