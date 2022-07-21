@@ -1,6 +1,6 @@
 <template>
   <v-content>
-    <v-btn plain disabled>Add New Task - User {{ current_id }}</v-btn>
+    <h1 class="my-5 uppercase font-mono text-zinc-500">Add New User</h1>
     <v-form @submit.prevent="addTask" id="task_add_form" v-model="valid">
       <v-container>
         <v-row>
@@ -12,18 +12,25 @@
               label="Name"
               required
             ></v-text-field>
+            <p class="text-red-500 flex justify-start">{{ errors.name }}</p>
           </v-col>
           <v-col cols="12" class="border bg-gray-200 mb-2">
-            <tip-tap-vue
-              v-model="title"
-              :rules="descriptionRules"
-              :counter="100"
-              class=""
-            >
-              <template v-slot:label>
-                <div>Description <small>(optional)</small></div>
-              </template>
-            </tip-tap-vue>
+            <v-text-field
+              v-model="email"
+              :rules="emailRules"
+              :counter="15"
+              label="Email"
+              required
+            ></v-text-field>
+            <p class="text-red-500 flex justify-start">{{ errors.email }}</p>
+          </v-col>
+          <v-col cols="12" class="border bg-gray-200 mb-2">
+            <v-text-field
+              v-model="imageurl"
+              :counter="15"
+              label="Image URL"
+              required
+            ></v-text-field>
           </v-col>
         </v-row>
       </v-container>
@@ -37,58 +44,53 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapActions } from "vuex";
 export default {
   data: () => ({
-    user_id: "",
     valid: false,
     name: "",
-    title: "",
+    email: "",
+    imageurl: "",
+    errors: {
+      name: "",
+      email: "",
+    },
     id: Math.floor(Math.random() * 1000),
-
     nameRules: [
       (v) => !!v || "Name is required",
       (v) => v.length <= 15 || "Name must be less than 15 characters",
     ],
-    descriptionRules: [
-      (v) => v.length <= 100 || "Description must be less than 100 characters",
+    emailRules: [
+      (v) => !!v || "Email is required",
+      (v) => v.length <= 100 || "Email must be less than 100 characters",
     ],
-    // items: ["True", "False"],
-    date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
-      .toISOString()
-      .substr(0, 10),
-    menu: false,
-    modal: false,
-    menu2: false,
-    snackbar: false,
-    text: "Successfully Submitted",
   }),
-  computed: {
-    ...mapState("user", ["current_id"]),
-  },
   methods: {
-    ...mapActions("task", ["task_add"]),
+    ...mapActions("user", ["user_add"]),
     addTask() {
-      this.snackbar = true;
-
-      console.log(this.current_id);
-
-      const newTask = {
-        user_id: this.current_id,
+      const newUser = {
         id: this.id,
         name: this.name,
-        title: this.title,
-        date: this.date,
-        completed: false,
-        status: "Not Done",
+        email: this.email,
+        imageurl: this.imageurl,
       };
 
-      console.log(newTask);
-      this.task_add(newTask);
-      this.$router.push({ path: "/" });
+      if (this.validate(newUser)) {
+        console.log(newUser);
+        this.user_add(newUser);
+        this.$router.push({ path: "/users" });
+      }
     },
-    close() {
-      this.snackbar = false;
+    validate({ name, email }) {
+      console.log(name);
+      if (name === "") {
+        this.errors.name = "Name is should not be empty";
+        return false;
+      } else if (email === "") {
+        this.errors.email = "Email is should not be empty";
+        return false;
+      }
+      return true;
     },
   },
 };

@@ -1,5 +1,13 @@
 <template>
   <v-main>
+    <v-snackbar v-model="toast" light>
+      {{ toast }}
+      <template v-slot:action="{ attrs }">
+        <v-btn color="indigo" text v-bind="attrs" @click="task_toast_remove()">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
     <v-btn class="my-5" plain loading v-if="isLoading"></v-btn>
     <div v-else>
       <v-toolbar flat color="#F5F5F5" class="my-5">
@@ -111,7 +119,7 @@ export default {
       return currentUser[0].name;
     },
 
-    ...mapActions("task", ["task_index", "task_delete"]),
+    ...mapActions("task", ["task_index", "task_delete", "task_toast_remove"]),
     ...mapActions("user", ["user_index"]),
   },
   mounted() {
@@ -126,6 +134,9 @@ export default {
     ...mapState("task", {
       tasks(state) {
         return state.tasks;
+      },
+      toast(state) {
+        return state.toast;
       },
     }),
   },

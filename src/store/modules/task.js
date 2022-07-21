@@ -32,6 +32,12 @@ export default {
     TASK_ADD(state, payload) {
       state.tasks.push(payload);
     },
+    TASK_TOAST_ADD(state, payload) {
+      state.toast = payload;
+    },
+    TASK_TOAST_REMOVE(state) {
+      state.toast = '';
+    },
   },
 
   actions: {
@@ -60,7 +66,7 @@ export default {
         method: "DELETE",
       });
     },
-    task_add: (context, payload) => {
+    task_add: async (context, payload) => {
       context.commit("TASK_ADD", payload);
       const newTask = { ...payload };
       // console.log(newTask);
@@ -69,8 +75,12 @@ export default {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newTask),
       };
-      fetch("http://localhost:3000/tasks", requestOptions);
+      await fetch("http://localhost:3000/tasks", requestOptions);
+      context.commit('TASK_TOAST_ADD', 'Task created successfully!');
     },
+    task_toast_remove: (context) => {
+      context.commit('TASK_TOAST_REMOVE');
+    }
   },
   getters: {
     getTasks: (state) => state.tasks,

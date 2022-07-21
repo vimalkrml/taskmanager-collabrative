@@ -1,6 +1,6 @@
 <template>
   <v-content>
-    <v-btn plain disabled>Add New Task - User {{ current_id }}</v-btn>
+    <h1 class="my-5 uppercase font-mono text-zinc-500">Add New Task</h1>
     <v-form @submit.prevent="addTask" id="task_add_form" v-model="valid">
       <v-container>
         <v-row>
@@ -12,6 +12,7 @@
               label="Name"
               required
             ></v-text-field>
+            {{ errors.name }}
           </v-col>
           <v-col cols="12" class="border bg-gray-200 mb-2">
             <tip-tap-vue
@@ -25,6 +26,7 @@
               </template>
             </tip-tap-vue>
           </v-col>
+          {{ errors.title }}
           <v-col cols="12" class="border bg-gray-200">
             <v-menu
               v-model="menu2"
@@ -58,20 +60,11 @@
         >
       </v-content>
     </v-form>
-    <v-snackbar v-model="snackbar" light>
-      {{ text }}
-
-      <template v-slot:action="{ attrs }">
-        <v-btn color="indigo" text v-bind="attrs" @click="close()">
-          Close
-        </v-btn>
-      </template>
-    </v-snackbar>
   </v-content>
 </template>
 
 <script>
-import TipTapVue from "./Tip-Tap.vue";
+import TipTapVue from "./TipTap.vue";
 import { mapState, mapActions } from "vuex";
 export default {
   components: {
@@ -83,8 +76,10 @@ export default {
     valid: false,
     name: "",
     title: "",
+    errors: {
+      name: "",
+    },
     id: Math.floor(Math.random() * 1000),
-
     nameRules: [
       (v) => !!v || "Name is required",
       (v) => v.length <= 15 || "Name must be less than 15 characters",
@@ -99,7 +94,6 @@ export default {
     menu: false,
     modal: false,
     menu2: false,
-    snackbar: false,
     text: "Successfully Submitted",
   }),
   computed: {
@@ -108,10 +102,6 @@ export default {
   methods: {
     ...mapActions("task", ["task_add"]),
     addTask() {
-      this.snackbar = true;
-
-      console.log(this.current_id);
-
       const newTask = {
         user_id: this.current_id,
         id: this.id,
@@ -122,12 +112,19 @@ export default {
         status: "Not Done",
       };
 
-      console.log(newTask);
-      this.task_add(newTask);
-      this.$router.push({ path: "/" });
+      if (this.validate(newTask)) {
+        console.log(newTask);
+        this.task_add(newTask);
+        this.$router.push({ path: "/" });
+      }
     },
-    close() {
-      this.snackbar = false;
+    validate({ name }) {
+      console.log(name);
+      if (name === "") {
+        this.errors.name = "Name is should not be empty";
+        return false;
+      }
+      return true;
     },
   },
 };

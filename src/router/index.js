@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/TasksPage.vue'
+import TasksPage from '../views/TasksPage.vue'
 import UsersPage from '../views/UsersPage.vue'
 
 Vue.use(VueRouter)
@@ -9,7 +9,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: TasksPage
   },
   {
     path: '/create',

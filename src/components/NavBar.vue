@@ -38,11 +38,13 @@
                 {{ user.email }}
               </p>
               <v-divider class="my-1"></v-divider>
-              <v-btn depressed rounded text to="/"> TASKS</v-btn>
+              <v-btn depressed rounded text to="/"> Tasks</v-btn>
               <v-divider class="my-1"></v-divider>
-              <v-btn depressed rounded text to="/users"> USERS</v-btn>
+              <v-btn depressed rounded text to="/users"> Users</v-btn>
               <v-divider class="my-1"></v-divider>
-              <v-btn depressed rounded text to="/create"> CREate</v-btn>
+              <v-btn depressed rounded text to="/create"> Add Task </v-btn>
+              <v-divider class="my-1"></v-divider>
+              <v-btn depressed rounded text to="/createuser"> Add User</v-btn>
             </div>
           </v-list-item-content>
         </v-card>
