@@ -10,7 +10,7 @@
     </v-snackbar>
     <v-btn class="my-5" plain loading v-if="isLoading"></v-btn>
     <div v-else>
-      <v-toolbar flat color="#F5F5F5" class="my-5">
+      <v-toolbar flat class="my-5">
         <v-toolbar-title class="font-bold">TASKS</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn depressed to="/create">Create Task</v-btn>
@@ -19,7 +19,7 @@
       <v-simple-table>
         <template v-slot:default>
           <thead>
-            <tr>
+            <tr class="bg-[#E0E0E0]">
               <th class="text-left">Done</th>
               <th class="text-left">Name</th>
               <th class="text-left">Description</th>
@@ -31,7 +31,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="task in tasks" :key="task.id">
+            <tr v-for="task in tasks" :key="task.id" class="bg-[#F5F5F5]">
               <td class="text-left">
                 <v-checkbox
                   v-model="task.completed"
