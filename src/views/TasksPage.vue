@@ -88,6 +88,7 @@
                   trigger="hover"
                   colors="primary:#121331"
                   class="cursor-pointer w-10"
+                  @click="editPage(task.id)"
                 >
                 </lord-icon>
               </td>
@@ -96,7 +97,12 @@
         </template>
       </v-simple-table>
     </div>
-    <edit-task class="hidden" />
+    <edit-task
+      :id="userId"
+      class="absolute top-0"
+      v-show="localState"
+      @tasksub="tasksub"
+    />
   </v-main>
 </template>
 
@@ -115,6 +121,8 @@ export default {
       text: null,
       currentuser: "",
       completedby: "",
+      localState: false,
+      userId: "",
     };
   },
   methods: {
@@ -139,6 +147,16 @@ export default {
       // console.log(currentUser[0].name);
       return currentUser[0].name;
     },
+    editPage(id) {
+      console.log(id);
+      this.userId = id;
+      this.localState = true;
+    },
+    tasksub(val) {
+      console.log(val);
+      this.localState = val;
+      console.log(this.localState);
+    },
     // task_modify() {},
 
     ...mapActions("task", ["task_index", "task_delete", "task_toast_remove"]),
@@ -161,6 +179,7 @@ export default {
         return state.toast;
       },
     }),
+    // mapState("task", ['editState'])
   },
 };
 </script>
