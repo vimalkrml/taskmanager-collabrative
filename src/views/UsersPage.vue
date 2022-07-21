@@ -1,20 +1,5 @@
 <template>
   <v-main>
-<<<<<<< HEAD
-    <v-list justify-center>
-      <v-btn depressed to="/create">ADD USER</v-btn>
-      <v-list-item v-for="user in users" :key="user.id" class="mb-2">
-        <v-list-item-avatar>
-          <v-img :src="user.imageurl" />
-        </v-list-item-avatar>
-        <v-list-item-content>
-          {{ user.name }}
-          <v-divider />
-          {{ user.email }}
-        </v-list-item-content>
-      </v-list-item>
-    </v-list>
-=======
     <v-btn class="my-5" plain loading v-if="isLoading"></v-btn>
     <div v-else>
       <v-toolbar flat class="my-5">
@@ -48,7 +33,6 @@
         </v-list-item>
       </v-list>
     </div>
->>>>>>> 1e316519da4104b2e278b1f562d385892225d4c9
   </v-main>
 </template>
 

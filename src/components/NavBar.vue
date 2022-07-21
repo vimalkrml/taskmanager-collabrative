@@ -1,7 +1,13 @@
 <template>
   <v-app-bar color="thin" dark fixed app>
     <v-row class="items-center justify-between">
-      <v-btn plain depressed class="uppercase" @click="task_reload()"
+      <v-btn
+        plain
+        depressed
+        text
+        to="/"
+        class="uppercase"
+        @click="task_reload()"
         >Task Manager
       </v-btn>
       <v-menu bottom min-width="200px" rounded offset-y>

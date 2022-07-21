@@ -130,6 +130,7 @@ export default {
         date: this.date,
         completed: false,
         status: "Not Done",
+        completedBy: "-",
       };
 
       console.log(newTask);

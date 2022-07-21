@@ -12,10 +12,20 @@ export default {
     },
     TASK_COMPLETE(state, payload) {
       //   console.log(state.tasks);
+      console.log(this.state.user.users);
+      console.log(payload.current_id);
+      let name = "";
+      this.state.user.users.forEach((user) => {
+        if (user.id == payload.current_id) {
+          name = user.name;
+        }
+      });
       state.tasks.forEach((task) => {
         if (task.id === payload.id) {
           task.completed = payload.completed;
-          task.status = true;
+          task.status = payload.completed ? "Done" : "Not Done";
+          task.completedBy = payload.completed ? name : "-";
+
           //   console.log(task);
         }
       });
@@ -41,11 +51,19 @@ export default {
     },
     task_complete: async (context, payload) => {
       context.commit("TASK_COMPLETE", payload);
+
+      const res = await fetch(
+        "http://localhost:3000/users/" + payload.current_id
+      );
+      const data = await res.json();
+      // console.log(data);
+
       const updateRequest = {
         method: "PATCH",
         body: JSON.stringify({
           completed: payload.completed,
           status: payload.completed ? "Done" : "Not Done",
+          completedBy: payload.completed ? await data.name : "-",
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
