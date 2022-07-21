@@ -2,11 +2,11 @@
   <v-main>
     <v-btn class="my-5" plain loading v-if="isLoading"></v-btn>
     <div v-else>
-      <v-toolbar flat class="my-5">
-        <v-toolbar-title class="font-bold">USERS</v-toolbar-title>
+      <div flat class="my-10 flex justify-between items-center text-2xl">
+        <h1 class="font-bold">USERS</h1>
         <v-spacer></v-spacer>
         <v-btn depressed to="/createuser">ADD USER</v-btn>
-      </v-toolbar>
+      </div>
 
       <v-list justify-center>
         <v-list-item

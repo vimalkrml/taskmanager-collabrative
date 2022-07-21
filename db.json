@@ -26,9 +26,9 @@
       "name": "tea",
       "title": "<h3><strong>cold</strong></h3>",
       "date": "2022-07-21",
-      "completed": false,
-      "status": "Not Done",
-      "completedBy": "-"
+      "completed": true,
+      "status": "Done",
+      "completedBy": "Vimal"
     },
     {
       "user_id": "1",

@@ -10,11 +10,11 @@
     </v-snackbar>
     <v-btn class="my-5" plain loading v-if="isLoading"></v-btn>
     <div v-else>
-      <v-toolbar flat class="my-5">
-        <v-toolbar-title class="font-bold">TASKS</v-toolbar-title>
+      <div flat class="my-10 flex justify-between items-center text-2xl">
+        <h1 class="font-bold">TASKS</h1>
         <v-spacer></v-spacer>
         <v-btn depressed to="/create">Create Task</v-btn>
-      </v-toolbar>
+      </div>
 
       <v-simple-table>
         <template v-slot:default>
