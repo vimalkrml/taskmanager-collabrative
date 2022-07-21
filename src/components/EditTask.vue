@@ -1,5 +1,5 @@
 <template>
-  <v-main>
+  <div class="w-[]">
     <h1 class="my-5 uppercase font-mono text-zinc-500">Add New Task</h1>
     <v-form @submit.prevent="addTask" id="task_add_form" v-model="valid">
       <v-container>
@@ -53,17 +53,14 @@
         </v-row>
       </v-container>
       <v-content>
-        <v-btn type="submit" form="task_add_form" color="thin" dark
-          >Add Task</v-btn
-        >
+        <v-btn type="submit" form="task_add_form" color="thin" dark>Save</v-btn>
       </v-content>
     </v-form>
-  </v-main>
+  </div>
 </template>
 
 <script>
 import TipTapVue from "./TipTap.vue";
-import { mapState, mapActions } from "vuex";
 export default {
   components: {
     TipTapVue,
@@ -93,43 +90,6 @@ export default {
     snackbar: false,
     text: "Successfully Submitted",
   }),
-  computed: {
-    ...mapState("user", ["current_id", "users.name"]),
-  },
-  methods: {
-    ...mapActions("task", ["task_add"]),
-    addTask() {
-      this.snackbar = true;
-
-      console.log(this.current_id);
-
-      const newTask = {
-        user_id: this.current_id,
-        id: this.id,
-        name: this.name,
-        title: this.title,
-        date: this.date,
-        completed: false,
-        status: "Not Done",
-        completedBy: "-",
-      };
-
-      console.log(newTask);
-      this.$router.push({ path: "/" });
-      this.task_add(newTask);
-      // this.newId;
-      // this.name;
-      // this.description;
-    },
-    validate({ name }) {
-      console.log(name);
-      if (name === "") {
-        this.errors.name = "Name is should not be empty";
-        return false;
-      }
-      return true;
-    },
-  },
 };
 </script>
 

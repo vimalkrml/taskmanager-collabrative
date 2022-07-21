@@ -1,5 +1,5 @@
 <template>
-  <v-content>
+  <v-main>
     <h1 class="my-5 uppercase font-mono text-zinc-500">Add New User</h1>
     <v-form @submit.prevent="addTask" id="task_add_form" v-model="valid">
       <v-container>
@@ -39,7 +39,7 @@
         >
       </v-content>
     </v-form>
-  </v-content>
+  </v-main>
 </template>
 
 <script>

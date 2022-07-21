@@ -96,12 +96,17 @@
         </template>
       </v-simple-table>
     </div>
+    <edit-task class="hidden" />
   </v-main>
 </template>
 
 <script>
 import { mapActions, mapState } from "vuex";
+import EditTask from "../components/EditTask.vue";
+
 export default {
+  components: { EditTask },
+
   data() {
     return {
       isLoading: true,

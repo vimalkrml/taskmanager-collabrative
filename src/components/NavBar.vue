@@ -20,14 +20,6 @@
         </v-menu>
         <v-btn plain depressed text to="/" class="uppercase"
           >Task Manager
-          <lord-icon
-            @click="task_reload()"
-            src="https://cdn.lordicon.com/sihdhmit.json"
-            colors="primary:#ffffff"
-            trigger="hover"
-            class="w-6 ml-5"
-          >
-          </lord-icon>
         </v-btn>
       </div>
 
@@ -79,13 +71,14 @@ export default {
       this.drawer = false;
     },
   },
-  methods: {
-    task_reload() {
-      window.location.reload();
-    },
-  },
+
   computed: {
     ...mapState("user", ["user"]),
+    ...mapState("task", {
+      tasks(state) {
+        return state.tasks;
+      },
+    }),
   },
 };
 </script>

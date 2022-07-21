@@ -1,5 +1,5 @@
 <template>
-  <v-footer fixed color="thin" dark padless class="py-3">
+  <v-footer color="thin" dark padless class="py-3 mt-96 bottom-0">
     <v-card
       tile
       flat
