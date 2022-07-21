@@ -1,6 +1,6 @@
 <template>
   <v-content>
-    <v-card-title>Add New Task - {{ current_id }}</v-card-title>
+    <h1 class="my-5 uppercase font-mono text-zinc-500">Add New Task</h1>
     <v-form @submit.prevent="addTask" id="task_add_form" v-model="valid">
       <v-container>
         <v-row>
@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import TipTapVue from "./Tip-Tap.vue";
+import TipTapVue from "./TipTap.vue";
 import { mapState, mapActions } from "vuex";
 export default {
   components: {
@@ -139,8 +139,13 @@ export default {
       // this.name;
       // this.description;
     },
-    close() {
-      this.snackbar = false;
+    validate({ name }) {
+      console.log(name);
+      if (name === "") {
+        this.errors.name = "Name is should not be empty";
+        return false;
+      }
+      return true;
     },
   },
 };
