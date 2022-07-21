@@ -56,7 +56,7 @@
       </v-container>
       <v-content>
         <v-btn type="submit" form="task_add_form" color="thin" dark
-          >Submit</v-btn
+          >Add Task</v-btn
         >
       </v-content>
     </v-form>
