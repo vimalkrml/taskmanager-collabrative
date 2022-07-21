@@ -109,8 +109,8 @@ export default {
           task.status = completed ? "Done" : "Not Done";
           this.text = task.status;
         }
+        this.snackbar = true;
       });
-      this.snackbar = true;
     },
 
     get_username(user_id) {

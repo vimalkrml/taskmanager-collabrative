@@ -39,7 +39,7 @@ export default {
       const data = await res.json();
       context.commit("TASKS_INDEX", data);
     },
-    task_complete: (context, payload) => {
+    task_complete: async (context, payload) => {
       context.commit("TASK_COMPLETE", payload);
       const updateRequest = {
         method: "PATCH",
@@ -51,7 +51,7 @@ export default {
           "Content-type": "application/json; charset=UTF-8",
         },
       };
-      fetch("http://localhost:3000/tasks/" + payload.id, updateRequest);
+      await fetch("http://localhost:3000/tasks/" + payload.id, updateRequest);
     },
     task_delete: async (context, payload) => {
       context.commit("TASK_DELETE", payload);

@@ -18,7 +18,7 @@
             <v-text-field
               v-model="email"
               :rules="emailRules"
-              :counter="15"
+              :counter="25"
               label="Email"
               required
             ></v-text-field>
@@ -27,7 +27,6 @@
           <v-col cols="12" class="border bg-gray-200 mb-2">
             <v-text-field
               v-model="imageurl"
-              :counter="15"
               label="Image URL"
               required
             ></v-text-field>
@@ -36,7 +35,7 @@
       </v-container>
       <v-content>
         <v-btn type="submit" form="task_add_form" color="thin" dark
-          >Submit</v-btn
+          >ADD USER</v-btn
         >
       </v-content>
     </v-form>
@@ -62,7 +61,7 @@ export default {
     ],
     emailRules: [
       (v) => !!v || "Email is required",
-      (v) => v.length <= 100 || "Email must be less than 100 characters",
+      (v) => v.length <= 25 || "Email must be less than 25 characters",
     ],
   }),
   methods: {
