@@ -18,6 +18,14 @@
             <v-divider />
             {{ user.email }}
           </v-list-item-content>
+          <lord-icon
+            @click="user_delete(user.id)"
+            src="https://cdn.lordicon.com/qsloqzpf.json"
+            trigger="hover"
+            colors="primary:#121331"
+            class="cursor-pointer w-7"
+          >
+          </lord-icon>
         </v-list-item>
       </v-list>
     </div>
@@ -33,7 +41,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions("user", ["user_index"]),
+    ...mapActions("user", ["user_index", "user_delete"]),
   },
   computed: {
     ...mapState("user", ["users"]),

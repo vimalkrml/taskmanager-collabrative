@@ -17,7 +17,9 @@
       </v-card>
     </v-menu>
     <v-row class="items-center justify-between">
-      <v-btn plain depressed class="uppercase" to="/">Task Manager </v-btn>
+      <v-btn plain depressed class="uppercase" @click="task_reload()"
+        >Task Manager
+      </v-btn>
       <v-menu bottom min-width="200px" rounded offset-y>
         <template v-slot:activator="{ on }">
           <v-btn icon x-large v-on="on">
@@ -64,6 +66,11 @@ export default {
   watch: {
     group() {
       this.drawer = false;
+    },
+  },
+  methods: {
+    task_reload() {
+      window.location.reload();
     },
   },
   computed: {
