@@ -1,17 +1,9 @@
 <template>
   <v-app-bar color="thin" dark fixed app>
     <v-row class="items-center justify-between">
-<<<<<<< HEAD
-      <v-app-bar-title
-        ><v-btn to="/">Tasks</v-btn>
-        <v-btn to="/users">Users</v-btn></v-app-bar-title
-      >
-      <v-app-bar-title class="uppercase">Task Manager </v-app-bar-title>
-=======
       <v-btn plain depressed class="uppercase" @click="task_reload()"
         >Task Manager
       </v-btn>
->>>>>>> 1e316519da4104b2e278b1f562d385892225d4c9
       <v-menu bottom min-width="200px" rounded offset-y>
         <template v-slot:activator="{ on }">
           <v-btn icon x-large v-on="on">
@@ -50,8 +42,6 @@
 <script>
 import { mapState } from "vuex";
 export default {
-<<<<<<< HEAD
-=======
   data: () => ({
     drawer: false,
     group: null,
@@ -67,7 +57,6 @@ export default {
       window.location.reload();
     },
   },
->>>>>>> 1e316519da4104b2e278b1f562d385892225d4c9
   computed: {
     ...mapState("user", ["user"]),
   },
