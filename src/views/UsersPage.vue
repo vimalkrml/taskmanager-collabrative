@@ -17,14 +17,18 @@
 =======
     <v-btn class="my-5" plain loading v-if="isLoading"></v-btn>
     <div v-else>
-      <v-toolbar flat color="#F5F5F5" class="my-5">
+      <v-toolbar flat class="my-5">
         <v-toolbar-title class="font-bold">USERS</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn depressed to="/createuser">ADD USER</v-btn>
       </v-toolbar>
 
       <v-list justify-center>
-        <v-list-item v-for="user in users" :key="user.id" class="mb-2">
+        <v-list-item
+          v-for="user in users"
+          :key="user.id"
+          class="mb-2 bg-[#F5F5F5]"
+        >
           <v-list-item-avatar>
             <v-img :src="user.imageurl" />
           </v-list-item-avatar>
