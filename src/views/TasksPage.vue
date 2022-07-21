@@ -28,6 +28,7 @@
               <th class="text-left">Added By</th>
               <th class="text-left">Date Added</th>
               <th class="text-left">Remove</th>
+              <th class="text-left">Edit</th>
             </tr>
           </thead>
           <tbody>
@@ -78,6 +79,15 @@
                   trigger="hover"
                   colors="primary:#121331"
                   class="cursor-pointer w-7"
+                >
+                </lord-icon>
+              </td>
+              <td class="text-left">
+                <lord-icon
+                  src="https://cdn.lordicon.com/wloilxuq.json"
+                  trigger="hover"
+                  colors="primary:#121331"
+                  class="cursor-pointer w-10"
                 >
                 </lord-icon>
               </td>
