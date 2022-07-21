@@ -11,7 +11,7 @@
     <v-btn class="my-5" plain loading v-if="isLoading"></v-btn>
     <div v-else>
       <v-toolbar flat color="#F5F5F5" class="my-5">
-        <v-toolbar-title>TASKS</v-toolbar-title>
+        <v-toolbar-title class="font-bold">TASKS</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn depressed to="/create">Create Task</v-btn>
       </v-toolbar>
@@ -127,7 +127,7 @@ export default {
     this.task_index();
     setTimeout(() => {
       this.isLoading = false;
-    }, 2000);
+    }, 2500);
   },
   computed: {
     ...mapState("user", ["users"]),

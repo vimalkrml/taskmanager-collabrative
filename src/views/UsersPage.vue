@@ -1,9 +1,9 @@
 <template>
   <v-main>
-    <v-btn class="mb-5" plain loading v-if="isLoading"></v-btn>
+    <v-btn class="my-5" plain loading v-if="isLoading"></v-btn>
     <div v-else>
       <v-toolbar flat color="#F5F5F5" class="my-5">
-        <v-toolbar-title>USERS</v-toolbar-title>
+        <v-toolbar-title class="font-bold">USERS</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn depressed to="/createuser">ADD USER</v-btn>
       </v-toolbar>
