@@ -2,7 +2,7 @@
   <div id="app">
     <v-app>
       <nav-bar />
-      <v-container app> <router-view /></v-container>
+      <v-container app class="mb-96"> <router-view /></v-container>
       <footer-bar></footer-bar>
     </v-app>
   </div>
