@@ -97,7 +97,7 @@ export default {
     text: "Successfully Submitted",
   }),
   computed: {
-    ...mapState("user", ["current_id"]),
+    ...mapState("user", ["current_id", "users.name"]),
   },
   methods: {
     ...mapActions("task", ["task_add"]),
@@ -110,6 +110,7 @@ export default {
         date: this.date,
         completed: false,
         status: "Not Done",
+        completedby: this.current_id,
       };
 
       if (this.validate(newTask)) {

@@ -4,6 +4,7 @@ export default {
         users: [],
         user: {},
         current_id: '',
+        name: ''
     },
     mutations: {
         USER_INDEX(state, users) {
@@ -29,6 +30,8 @@ export default {
         },
         USER_LOGIN(state, payload) {
             state.current_id = payload
+            state.name = payload
+            console.log(state.name)
         }
     },
 
@@ -36,8 +39,7 @@ export default {
         user_index: async (context) => {
             const res = await fetch("http://localhost:3000/users");
             const data = await res.json();
-            console.log(data);
-
+            // console.log(data);
             context.commit("USER_INDEX", data);
         },
         user_delete: async (context, payload) => {
@@ -60,7 +62,7 @@ export default {
         user_show: async (context, payload) => {
             const response = await fetch("http://localhost:3000/users/" + payload);
             const json = await response.json();
-            console.log(json);
+            // console.log(json);
             context.commit("USER_SHOW", json);
         },
         user_login: (context, payload) => {
