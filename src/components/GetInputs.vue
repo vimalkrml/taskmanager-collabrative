@@ -94,7 +94,7 @@ export default {
     text: "Successfully Submitted",
   }),
   computed: {
-    ...mapState("user", ["current_id", "users.name"]),
+    ...mapState("user", ["current_id"]),
   },
   methods: {
     ...mapActions("task", ["task_add"]),

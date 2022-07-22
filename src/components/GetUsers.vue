@@ -63,7 +63,6 @@ export default {
       (v) => !!v || "Email is required",
       (v) => v.length <= 25 || "Email must be less than 25 characters",
     ],
-    text: "Successfully Submitted",
   }),
   methods: {
     ...mapActions("user", ["user_add"]),

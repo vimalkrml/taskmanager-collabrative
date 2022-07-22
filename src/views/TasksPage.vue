@@ -58,8 +58,8 @@
                 :class="{ 'line-through text-gray-400': task.completed }"
                 v-html="task.name"
               ></td>
-              <td class="text-left pt-4" v-html="task.title"></td>
-              <td class="text-left">{{ task.modifiedby }}</td>
+              <td class="text-left" v-html="task.title"></td>
+              <td class="text-left">{{ task.modifiedBy }}</td>
               <td class="text-left">{{ task.completedBy }}</td>
               <td class="text-left">
                 {{ get_username(task.user_id) }}
@@ -146,7 +146,7 @@ export default {
     get_username(user_id) {
       const currentUser = this.users.filter((user) => user.id == user_id);
       // console.log(currentUser[0].name);
-      return currentUser[0].name;
+      return currentUser;
     },
     editPage(id) {
       console.log(id);
