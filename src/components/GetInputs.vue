@@ -75,6 +75,9 @@ export default {
     name: "",
     title: "",
     id: Math.floor(Math.random() * 1000),
+    errors: {
+      name: "",
+    },
 
     nameRules: [
       (v) => !!v || "Name is required",
@@ -107,8 +110,13 @@ export default {
         completed: false,
         status: "Not Done",
         completedBy: "-",
-        modifiedby: "-",
+        modifiedBy: "-",
       };
+      if (!this.validate(newTask)) {
+        // this.snackbar = true;
+
+        return;
+      }
 
       console.log(newTask);
       this.$router.push({ path: "/" });
