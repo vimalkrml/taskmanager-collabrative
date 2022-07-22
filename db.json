@@ -1,16 +1,15 @@
 {
   "tasks": [
     {
-      "user_id": "284",
-      "id": 975,
-      "name": "fixed",
-      "title": "<p>tasks and users</p>",
+      "user_id": "3",
+      "id": 405,
+      "name": "fasdfasf",
+      "title": "<p>asdfasff</p>",
       "date": "2022-07-22",
-      "completed": true,
-      "status": "Done",
-      "completedBy": "Vimal",
-      "modifiedby": "-",
-      "modifiedBy": "Vimal"
+      "completed": false,
+      "status": "Not Done",
+      "completedBy": "-",
+      "modifiedBy": "-"
     }
   ],
   "users": [
@@ -19,6 +18,12 @@
       "name": "Vimal",
       "email": "vimalkr141@gmail.com",
       "imageurl": "https://unsplash.com/photos/pVzyRR25rRo/download?ixid=MnwxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjU4NDg1ODg2&force=true&w=640"
+    },
+    {
+      "id": 3,
+      "name": "karthik",
+      "email": "adfasfaf@gmailc.com",
+      "imageurl": ""
     }
   ]
 }
