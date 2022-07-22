@@ -32,7 +32,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="task in tasks" :key="task.id" class="bg-[#F5F5F5]">
+            <tr v-for="task in tasks" :key="task.id">
               <td class="text-left">
                 <v-checkbox
                   v-model="task.completed"
