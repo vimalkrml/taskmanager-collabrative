@@ -146,7 +146,7 @@ export default {
     get_username(user_id) {
       const currentUser = this.users.filter((user) => user.id == user_id);
       // console.log(currentUser[0].name);
-      return currentUser;
+      return currentUser[0].name;
     },
     editPage(id) {
       console.log(id);
