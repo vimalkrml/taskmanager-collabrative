@@ -12,6 +12,7 @@
               label="Name"
               required
             ></v-text-field>
+            <p class="text-red-500 flex justify-start">{{ errors.name }}</p>
           </v-col>
           <v-col cols="12" class="border bg-gray-200 mb-2">
             <tip-tap-vue
@@ -20,10 +21,10 @@
               :counter="100"
               class=""
             >
-              <template v-slot:label>
-                <div>Description <small>(optional)</small></div>
-              </template>
             </tip-tap-vue>
+            <p class="text-red-500 flex justify-start">
+              {{ errors.title }}
+            </p>
           </v-col>
           <v-col cols="12" class="border bg-gray-200">
             <v-menu
@@ -77,6 +78,7 @@ export default {
     id: Math.floor(Math.random() * 1000),
     errors: {
       name: "",
+      title: "",
     },
 
     nameRules: [
@@ -122,10 +124,13 @@ export default {
       this.$router.push({ path: "/" });
       this.task_add(newTask);
     },
-    validate({ name }) {
+    validate({ name, title }) {
       console.log(name);
       if (name === "") {
-        this.errors.name = "Name is should not be empty";
+        this.errors.name = "Name should not be empty";
+        return false;
+      } else if (title === "") {
+        this.errors.title = "Description should not be empty";
         return false;
       }
       return true;

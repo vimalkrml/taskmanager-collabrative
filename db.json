@@ -1,24 +1,31 @@
 {
   "tasks": [
-    {
-      "user_id": "284",
-      "id": 975,
-      "name": "fixed",
-      "title": "<p>tasks and users</p>",
-      "date": "2022-07-22",
-      "completed": true,
-      "status": "Done",
-      "completedBy": "Vimal",
-      "modifiedby": "-",
-      "modifiedBy": "Vimal"
-    }
+    
   ],
   "users": [
     {
-      "id": 284,
+      "id": 1,
       "name": "Vimal",
-      "email": "vimalkr141@gmail.com",
+      "email": "vimalkr@gmail.com",
       "imageurl": "https://unsplash.com/photos/pVzyRR25rRo/download?ixid=MnwxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjU4NDg1ODg2&force=true&w=640"
+    },
+    {
+      "id": 2,
+      "name": "Gokul",
+      "email": "gokulpradip@gmail.com",
+      "imageurl": "https://unsplash.com/photos/FhQmrpq6_Tk/download?ixid=MnwxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjU4NDg2MDg2&force=true&w=640"
+    },
+    {
+      "id": 3,
+      "name": "Karthik",
+      "email": "karthik@gmail.com",
+      "imageurl": "https://unsplash.com/photos/85J99sGggnw/download?ixid=MnwxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjU4NDg4MTUz&force=true&w=640"
+    },
+    {
+      "id": 4,
+      "name": "Hadi",
+      "email": "hadi@gmail.com",
+      "imageurl": "https://unsplash.com/photos/t3zrEm88ehc/download?ixid=MnwxMjA3fDB8MXxzZWFyY2h8MTZ8fHBlcnNvbnxlbnwwfHx8fDE2NTg0NDA0NTY&force=true&w=640"
     }
   ]
 }
