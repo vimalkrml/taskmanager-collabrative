@@ -41,7 +41,7 @@ import { mapActions, mapState } from "vuex";
 export default {
   data() {
     return {
-      isLoading: false,
+      isLoading: true,
     };
   },
   methods: {
@@ -52,6 +52,9 @@ export default {
   },
   mounted() {
     this.user_index();
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 1000);
   },
 };
 </script>

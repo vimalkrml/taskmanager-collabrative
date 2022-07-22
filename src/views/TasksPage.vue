@@ -58,7 +58,7 @@
                 :class="{ 'line-through text-gray-400': task.completed }"
                 v-html="task.name"
               ></td>
-              <td class="text-left" v-html="task.title"></td>
+              <td class="text-left pt-4" v-html="task.title"></td>
               <td class="text-left">{{ task.modifiedby }}</td>
               <td class="text-left">{{ task.completedBy }}</td>
               <td class="text-left">
@@ -136,6 +136,7 @@ export default {
           task.completed = completed;
           task.status = completed ? "Done" : "Not Done";
           this.text = task.status;
+          // this.completedby = this.currentuser;
         }
       });
 
@@ -154,7 +155,6 @@ export default {
     },
     tasksub(val) {
       console.log(val);
-
       this.localState = val;
       console.log(this.localState);
     },
