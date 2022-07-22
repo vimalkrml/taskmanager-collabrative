@@ -59,7 +59,7 @@
                 v-html="task.name"
               ></td>
               <td class="text-left" v-html="task.title"></td>
-              <td class="text-left">{{ task.modifiedby }}</td>
+              <td class="text-left">{{ task.modifiedBy }}</td>
               <td class="text-left">{{ task.completedBy }}</td>
               <td class="text-left">
                 {{ get_username(task.user_id) }}

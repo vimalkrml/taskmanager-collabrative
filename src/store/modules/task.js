@@ -12,8 +12,8 @@ export default {
     },
     TASK_COMPLETE(state, payload) {
       //   console.log(state.tasks);
-      console.log(this.state.user.users);
-      console.log(payload.current_id);
+      // console.log(this.state.user.users);
+      // console.log(payload.current_id);
       let name = "";
       this.state.user.users.forEach((user) => {
         if (user.id == payload.current_id) {
@@ -42,11 +42,22 @@ export default {
       state.tasks.push(payload);
     },
     TASK_EDIT(state, payload) {
+      console.log(payload.current_id);
+      let name = "";
+      this.state.user.users.forEach((user) => {
+        if (user.id == payload.current_id) {
+          name = user.name;
+        }
+      });
+      console.log(name);
+
       state.tasks.forEach((task) => {
         if (task.id == payload.id) {
           task.name = payload.editedData.name;
           task.title = payload.editedData.title;
           task.date = payload.editedData.date;
+          task.modifiedBy = name ? name : "-";
+          // console.log(task);
         }
       });
     },
@@ -100,7 +111,14 @@ export default {
     async task_edit(context, payload) {
       console.log(context, payload);
       context.commit("TASK_EDIT", payload);
-      const editTask = { ...payload.editedData };
+      const res = await fetch(
+        "http://localhost:3000/users/" + payload.current_id
+      );
+      const data = await res.json();
+      const editTask = {
+        ...payload.editedData,
+        modifiedBy: (await data.name) ? data.name : "-",
+      };
       // console.log(editTask);
       const requestOptions = {
         method: "PATCH",
