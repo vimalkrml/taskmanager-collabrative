@@ -4,7 +4,8 @@ export default {
         users: [],
         user: {},
         current_id: '',
-        name: ''
+        name: '',
+        toast: ''
     },
     mutations: {
         USER_INDEX(state, users) {
@@ -32,7 +33,13 @@ export default {
             state.current_id = payload
             state.name = payload
             console.log(state.name)
-        }
+        },
+        USER_TOAST_ADD(state, payload) {
+            state.toast = payload;
+        },
+        USER_TOAST_REMOVE(state) {
+            state.toast = '';
+        },
     },
 
     actions: {
@@ -48,7 +55,7 @@ export default {
                 method: "DELETE",
             });
         },
-        user_add: (context, payload) => {
+        user_add: async (context, payload) => {
             context.commit("USER_ADD", payload);
             const newuser = { ...payload };
             // console.log(newuser);
@@ -57,7 +64,11 @@ export default {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(newuser),
             };
-            fetch("http://localhost:3000/users", requestOptions);
+            await fetch("http://localhost:3000/users", requestOptions);
+            context.commit('USER_TOAST_ADD', 'User created successfully!');
+        },
+        user_toast_remove: (context) => {
+            context.commit('USER_TOAST_REMOVE');
         },
         user_show: async (context, payload) => {
             const response = await fetch("http://localhost:3000/users/" + payload);

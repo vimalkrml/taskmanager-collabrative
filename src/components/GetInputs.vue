@@ -90,8 +90,6 @@ export default {
     menu: false,
     modal: false,
     menu2: false,
-    snackbar: false,
-    text: "Successfully Submitted",
   }),
   computed: {
     ...mapState("user", ["current_id"]),
@@ -99,10 +97,7 @@ export default {
   methods: {
     ...mapActions("task", ["task_add"]),
     addTask() {
-      this.snackbar = true;
-
       console.log(this.current_id);
-
       const newTask = {
         user_id: this.current_id,
         id: this.id,

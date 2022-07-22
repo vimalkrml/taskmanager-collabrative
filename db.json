@@ -1,65 +1,24 @@
 {
   "tasks": [
     {
-      "user_id": "1",
-      "id": 289,
-      "name": "sleep",
-      "title": "<p>hii</p>",
+      "user_id": "284",
+      "id": 975,
+      "name": "fixed",
+      "title": "<p>tasks and users</p>",
       "date": "2022-07-22",
-      "completed": false,
-      "status": "Not Done",
-      "completedBy": "-",
-      "modifiedby": "-"
-    },
-    {
-      "user_id": "1",
-      "id": 110,
-      "name": "wf",
-      "title": "",
-      "date": "2022-07-22",
-      "completed": false,
-      "status": "Not Done",
-      "completedBy": "-",
-      "modifiedby": "-",
-      "modifiedBy": "Vimal"
-    },
-    {
-      "user_id": "1",
-      "id": 525,
-      "name": "hiiidfghnj",
-      "title": "",
-      "date": "2022-07-22",
-      "completed": false,
-      "status": "Not Done",
-      "completedBy": "-",
+      "completed": true,
+      "status": "Done",
+      "completedBy": "Vimal",
       "modifiedby": "-",
       "modifiedBy": "Vimal"
     }
   ],
   "users": [
     {
-      "id": 1,
+      "id": 284,
       "name": "Vimal",
-      "email": "vimal@gmail.com",
-      "imageurl": "https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"
-    },
-    {
-      "id": 2,
-      "name": "Gokul",
-      "email": "gokulpradip@gmail.com",
-      "imageurl": "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-    },
-    {
-      "id": 3,
-      "name": "Karthik",
-      "email": "karthik@gmail.com",
-      "imageurl": "https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
-    },
-    {
-      "id": 257,
-      "name": "Hadi",
-      "email": "hadi@gmail.com",
-      "imageurl": ""
+      "email": "vimalkr141@gmail.com",
+      "imageurl": "https://unsplash.com/photos/pVzyRR25rRo/download?ixid=MnwxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjU4NDg1ODg2&force=true&w=640"
     }
   ]
 }
