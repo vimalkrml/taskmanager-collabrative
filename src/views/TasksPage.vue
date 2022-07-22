@@ -171,7 +171,7 @@ export default {
     this.task_index();
     setTimeout(() => {
       this.isLoading = false;
-    }, 1000);
+    }, 2000);
   },
   computed: {
     ...mapState("user", ["users"]),

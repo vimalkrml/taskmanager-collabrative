@@ -30,6 +30,7 @@
               label="Image URL"
               required
             ></v-text-field>
+            <p class="text-red-500 flex justify-start">{{ errors.imageurl }}</p>
           </v-col>
         </v-row>
       </v-container>
@@ -53,8 +54,9 @@ export default {
     errors: {
       name: "",
       email: "",
+      imageurl: "",
     },
-    id: Math.floor(Math.random() * 1000),
+    id: Math.floor(Math.random() * 20),
     nameRules: [
       (v) => !!v || "Name is required",
       (v) => v.length <= 15 || "Name must be less than 15 characters",
@@ -80,13 +82,16 @@ export default {
         this.$router.push({ path: "/users" });
       }
     },
-    validate({ name, email }) {
+    validate({ name, email, imageurl }) {
       console.log(name);
       if (name === "") {
-        this.errors.name = "Name is should not be empty";
+        this.errors.name = "Name should not be empty";
         return false;
       } else if (email === "") {
-        this.errors.email = "Email is should not be empty";
+        this.errors.email = "Email should not be empty";
+        return false;
+      } else if (imageurl === "") {
+        this.errors.imageurl = "URL should not be empty";
         return false;
       }
       return true;
