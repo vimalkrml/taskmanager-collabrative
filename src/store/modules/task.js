@@ -3,7 +3,7 @@ export default {
   state: {
     tasks: [],
     task: {},
-    toast: ''
+    toast: "",
   },
   mutations: {
     TASKS_INDEX(state, tasks) {
@@ -46,7 +46,7 @@ export default {
       state.toast = payload;
     },
     TASK_TOAST_REMOVE(state) {
-      state.toast = '';
+      state.toast = "";
     },
     TASK_EDIT(state, payload) {
       console.log(payload.current_id);
@@ -105,7 +105,6 @@ export default {
       });
     },
     task_add: async (context, payload) => {
-      context.commit("TASK_ADD", payload);
       const newTask = { ...payload };
       // console.log(newTask);
       const requestOptions = {
@@ -114,14 +113,15 @@ export default {
         body: JSON.stringify(newTask),
       };
       await fetch("http://localhost:3000/tasks", requestOptions);
-      context.commit('TASK_TOAST_ADD', 'Task created successfully!');
+      context.commit("TASK_ADD", payload);
+
+      context.commit("TASK_TOAST_ADD", "Task created successfully!");
     },
     task_toast_remove: (context) => {
-      context.commit('TASK_TOAST_REMOVE');
+      context.commit("TASK_TOAST_REMOVE");
     },
     async task_edit(context, payload) {
       console.log(context, payload);
-      context.commit("TASK_EDIT", payload);
       const res = await fetch(
         "http://localhost:3000/users/" + payload.current_id
       );
@@ -137,6 +137,7 @@ export default {
         body: JSON.stringify(editTask),
       };
       await fetch("http://localhost:3000/tasks/" + payload.id, requestOptions);
+      context.commit("TASK_EDIT", payload);
     },
   },
   getters: {
