@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import TasksPage from "../views/TasksPage.vue";
 import UsersPage from "../views/UsersPage.vue";
+import EditTask from "../components/EditTask.vue";
 
 Vue.use(VueRouter);
 
@@ -20,6 +21,12 @@ const routes = [
     path: "/users",
     name: "users",
     component: UsersPage,
+  },
+  {
+    path: "/edit/:id",
+    name: "edit",
+    component: EditTask,
+    props: true,
   },
   {
     path: "/createuser",

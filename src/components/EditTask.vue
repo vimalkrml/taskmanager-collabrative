@@ -99,9 +99,12 @@ export default {
         date: this.date,
       };
       let id = this.id;
+      console.log(id);
       let current_id = this.$store.state.user.current_id;
       // console.log(this.title, this.name, this.date);
-      this.$emit("tasksub", false);
+      // this.$emit("tasksub", false);
+      this.$router.push({ path: "/" });
+
       this.$store.dispatch("task/task_edit", { editedData, id, current_id });
     },
   },

@@ -84,14 +84,16 @@
                   </lord-icon>
                 </td>
                 <td class="text-left">
-                  <lord-icon
-                    src="https://cdn.lordicon.com/wloilxuq.json"
-                    trigger="hover"
-                    colors="primary:#121331"
-                    class="cursor-pointer w-10"
-                    @click="editPage(task.id)"
-                  >
-                  </lord-icon>
+                  <router-link :to="{ name: 'edit', params: { id: userId } }">
+                    <lord-icon
+                      src="https://cdn.lordicon.com/wloilxuq.json"
+                      trigger="hover"
+                      colors="primary:#121331"
+                      class="cursor-pointer w-10"
+                      @click="editPage(task.id)"
+                    >
+                    </lord-icon>
+                  </router-link>
                 </td>
               </tr>
             </tbody>
@@ -99,23 +101,19 @@
         </v-simple-table>
       </div>
       <no-task v-else />
-      <edit-task
-        :id="userId"
-        class="absolute top-0"
-        v-show="localState"
-        @tasksub="tasksub"
-      />
+
+      <!-- <edit-task :id="userId" @tasksub="tasksub" /> -->
     </div>
   </v-main>
 </template>
 
 <script>
 import { mapActions, mapState } from "vuex";
-import EditTask from "../components/EditTask.vue";
+// import EditTask from "../components/EditTask.vue";
 import NoTask from "../components/NoTask.vue";
 
 export default {
-  components: { EditTask, NoTask },
+  components: { NoTask },
 
   data() {
     return {
